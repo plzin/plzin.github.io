@@ -1,0 +1,56 @@
+:root {
+    --background: #fdfdfd;
+    --foreground: #111;
+}
+
+[data-theme='dark'] {
+    --background: #303030;
+    --foreground: #f8f0d0;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+        Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    line-height: 1.6;
+    font-size: 18px;
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: #0070f3;
+    text-decoration: none;
+
+    &:visited {
+        color: #1868d0;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+[data-theme='dark'] a {
+    color: #f07010;
+    text-decoration: none;
+
+    &:visited {
+        color: #e08000;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
