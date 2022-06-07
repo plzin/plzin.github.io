@@ -1,6 +1,6 @@
 ---
 title: 'Mixed boolean-arithmetic: Introduction (Part 1)'
-date: '2022-04-05'
+date: '2022-06-07'
 ---
 
 What does the following function do?
