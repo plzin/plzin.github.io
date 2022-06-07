@@ -4,8 +4,8 @@
 }
 
 [data-theme='dark'] {
-    --background: #303030;
-    --foreground: #f8f0d0;
+    --background: #292828;
+    --foreground: #d1cbb8;
 }
 
 html,
@@ -55,6 +55,20 @@ img {
     display: block;
 }
 
+table {
+    margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse;
+    border: 1px solid var(--foreground);
+    letter-spacing: 1px;
+}
+
+td, th {
+    border: 1px solid var(--foreground);
+    padding: 5px 10px;
+    text-align: center;
+}
+
 details {
     border: 1px solid #aaa;
     border-radius: 4px;
@@ -74,4 +88,17 @@ details[open] {
 details[open] summary {
     border-bottom: 1px solid #aaa;
     margin-bottom: .5em;
+}
+
+blockquote {
+    background-color: #32302f;
+    border-left: 4px solid #bd6f3e;
+}
+
+[data-theme='dark'] {
+    @import 'gruvbox-dark.scss';
+}
+
+[data-theme='light'] {
+    @import 'gruvbox-light.scss';
 }

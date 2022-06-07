@@ -29,7 +29,7 @@ For me the reason this is unconvincing (and was unconvincing back when I was in 
 $\frac{1}{3}$ is exactly equal to $0.\overline{3}$.
 During the long division we always have a remainder, so should we also have an infinitesimally small remainder in the limit?
 Is $\frac{1}{3}$ really $0.\overline{3}$ or is $\frac{1}{3}$ just this infinitesimally small amount bigger?
-I would actually argue the other way around, since $0.\overline{9}$ is *obviously* less than $1$,
+I would actually argue the other way around, since $0.\overline{9}$ is *obviously* (for the sake of this argument) less than $1$,
 $0.\overline{3}$ has to be less than $\frac{1}{3}$.
 
 We will actually find a way to make this rigorous using hyperreal numbers at the end of this article.
@@ -132,7 +132,7 @@ $$0.\overline{9} = (\tfrac{9}{10}, \tfrac{99}{100}, \tfrac{999}{1000}, \tfrac{99
 
 Two numbers are equal (by our definition of equality), if their difference converges to zero.
 $$(1, 1, 1, 1, \dots) - (\tfrac{9}{10}, \tfrac{99}{100}, \tfrac{999}{1000}, \tfrac{9999}{10000}, \dots) = (\tfrac{1}{10}, \tfrac{1}{100}, \tfrac{1}{1000}, \tfrac{1}{10000}, \dots) $$
-This *obviously* converges to 0.
+This *obviously* converges to 0. (Since I didn't tell you the formal definition of converge, you will have to trust me).
 
 Indeed, $0.\overline{9}$ does equal $1$! By definition of the real numbers.
 
