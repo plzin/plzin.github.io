@@ -1,5 +1,5 @@
 ---
-title: 'Mixed boolean-arithmetic: Introduction (Part 1)'
+title: 'Mixed boolean-arithmetic (Part 1): Introduction'
 date: '2022-06-07'
 ---
 
@@ -11,7 +11,7 @@ int hmm(int x, int y) {
 }
 ```
 
-Maybe if you computed some examples you could figure it out, because what the function computes is fairly simple.
+Maybe, if you computed some examples, you could figure it out, because what the function computes is fairly simple.
 You could also try to decipher what happens on the bit level without computing any examples, although it probably isn't that easy.
 What the function uses is called **Mixed boolean-arithmetic** (MBA): It combines arithmetic operations (+, -, *, /) with boolean operations (&, |, ^, ~).
 
@@ -96,7 +96,7 @@ The 2007 paper included a subset of permutation polynomials and a formula for th
 A way to [compute the inverse of a general permutation polynomials](https://dl.acm.org/doi/10.1145/2995306.2995310) was only published in 2016.
 
 # MBA Identities
-To me personally this seems like it should be the harder of the two problems.
+To me personally, this seems like it should be the harder of the two problems.
 It seems like there should just be some neat formula to find the inverse of a permutation polynomial,
 but historically this problem was solved first.
 
@@ -146,7 +146,7 @@ Basically any function $f: \{0, 1\}^m \to \{0, 1\}$ that is applied to each bit 
 For example bit i of `x * y` depends on a lot of bits and not just bit i of `x` and bit i of `y`, so `*` is not a bitwise function whereas `&` is.
 
 This property of boolean operations makes it possible to restrict the inputs we have to consider to just 0 and 1 for each input (I won't prove this here).
-In the example above we would only have the following table with 4 rows instead of 16 or in general $2^m$ instead of $2^{mn}$.
+In the example above, we would only have the following table with 4 rows instead of 16 or in general $2^m$ instead of $2^{mn}$.
 
 | x | y | x ^ y | x & y | x + y |
 | --- | --- | --- | --- | --- |
@@ -172,8 +172,8 @@ A polynomial $p(x) = a_0 + \dots + a_dx^d$ over $\mathbb Z/2^n\mathbb Z$ is a pe
 - $a_2 + a_4 + a_6 + \dots$ is even
 - $a_3 + a_5 + a_7 + \dots$ is even
 
-The problem then is finding the inverse to such a polynomial.
-As mentioned this is not trivial in general, but we can quickly take a look at a simple example where $d = \deg p = 1$: $p(x) = a_1x + a_0$.
+The problem then, is finding the inverse to such a polynomial.
+As mentioned, this is not trivial in general, but we can quickly take a look at a simple example where $d = \deg p = 1$: $p(x) = a_1x + a_0$.
 These are used as [Linear Congruential Generators](https://en.wikipedia.org/wiki/Linear_congruential_generator) (although the modulus need not be a power of two) that are used as very simple (and definitely not cryptographically secure) random number generators.
 
 The following discussion is not strictly necessary to understand the rest of this post. It is more for the fun of it.
@@ -201,7 +201,7 @@ Though there is an algorithm that seems to work, but there isn't really a proof 
 <!--$x^{10} + 211x^9 + 102x^8 + 22x^7 + 41x^6 + 243x^5 + 224x^4 + 36x^3 + 16x^2 + 128x$-->
 
 # Obfuscating integers
-Of course there are many ways to combine these primitives.
+Of course, there are many ways to combine these primitives.
 The example at the beginning was just some combination of the two.
 One application I particularly like is obfuscating integers.
 
@@ -218,7 +218,7 @@ $$\left[\begin{array}{ccc}\langle x\oplus y \rangle & \langle x \land y \rangle 
 If you tried this, you would find that the expression would evaluate to the constant -1312.
 This is very close to the real solution, but there are some misconceptions at play here.
 The constant $1312$ is not a bitwise function, because there is a different function for bits in different positions.
-For some bits it's the constant 0 function and for some the constant 1.
+For some bits it is the constant 0 function and for the others the constant 1.
 We know though, that these functions are allowed to be linear combinations of bitwise functions, so maybe this would work:
 
 $$\left[\begin{array}{ccc}\langle x\oplus y \rangle & \langle x \land y \rangle & \langle \lnot(x \lor y) \rangle \\ \end{array}\right]\cdot\textbf{a} = 1312\cdot \langle 1 \rangle$$
@@ -253,7 +253,7 @@ int c(int x, int y) {
         + 2049622064 * ~y + -775424323 * y + -1546963061 * a
         + -1674262411 * (y & a) + 3114745555 * (b | a)
         + 3327705389 * (~b & a) + 3821746059 * (y | ~a);
-    
+
     // Evaluate the inverse.
     int d = 2025852808*c*c + 2628772947*c + 2801763453;
 
@@ -270,3 +270,4 @@ int c(int x, int y) {
 If you want to try this you can check out my implementation in rust [here](https://github.com/plzin/mba).
 Eventually I'd like to compile it to WASM and have a demo here but that is future work.
 The next post will be about solving linear systems over $\mathbb{Z}/n\mathbb{Z}$ and should hopefully come soon 😅.
+

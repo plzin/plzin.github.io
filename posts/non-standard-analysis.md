@@ -297,3 +297,4 @@ and you could redefine $0.\overline{9}$ to be infinitesimally smaller, but you h
 If you are interested in an introduction to hyperreal numbers on a high school level I recommend the first chapter of the free book [Elementary Calculus: An Infinitesimal Approach](https://people.math.wisc.edu/~keisler/calc.html).
 If you already know some higher algebra (rings, fields) you could read the companion to the book textbook [Foundations of Infinitesimal Calculus](https://people.math.wisc.edu/~keisler/foundations.html), which introduces hyperreal numbers to mathematicians.
 Lastly, [here](https://web.archive.org/web/20121207075126/http://www.math.umt.edu/tmme/vol7no1/TMME_vol7no1_2010_article1_pp.3_30.pdf) is a paper that discusses the issue of $0.\overline{9}=1$ in more detail on a higher level.
+
