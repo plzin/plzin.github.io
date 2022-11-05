@@ -1,11 +1,34 @@
 :root {
     --background: #fdfdfd;
     --foreground: #111;
+    --primary: #88c4ff;
+    --bg-2: #fafafa;
+    --link: #0070f3;
+    --link-clicked: #1868d0;
+    --border: #b0b0b0;
+    --border-2: #909090;
 }
 
 [data-theme='dark'] {
     --background: #292828;
     --foreground: #d1cbb8;
+    --primary: #bd6f3e;
+    --bg-2: #32302f;
+    --link: #f07010;
+    --link-clicked: #e08000;
+    --border: #57524d;
+    --border-2: #625c53;
+}
+
+[data-theme='crimson'] {
+    --background: #171717;
+    --foreground: #e0e0e0;
+    --primary: #ca163a;
+    --bg-2: #1a1a1a;
+    --link: var(--primary);
+    --link-clicked: #ff1b48;
+    --border: #303030;
+    --border-2: #383838;
 }
 
 html,
@@ -25,24 +48,11 @@ body {
 }
 
 a {
-    color: #0070f3;
+    color: var(--link);
     text-decoration: none;
 
     &:visited {
-        color: #1868d0;
-    }
-
-    &:hover {
-        text-decoration: underline;
-    }
-}
-
-[data-theme='dark'] a {
-    color: #f07010;
-    text-decoration: none;
-
-    &:visited {
-        color: #e08000;
+        color: var(--link-clicked);
     }
 
     &:hover {
@@ -52,25 +62,44 @@ a {
 
 img {
     max-width: 100%;
-    display: block;
 }
 
 table {
-    margin-right: auto;
-    margin-left: auto;
+    caption-side: bottom;
     border-collapse: collapse;
-    border: 1px solid var(--foreground);
-    letter-spacing: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 4px solid var(--primary);
+    background-color: var(--bg-2);
+
+    > :not(caption) > * > * {
+        border: 1px solid var(--border);
+    }
+
+    > tbody {
+        vertical-align: inherit;
+    }
+
+    > thead {
+        vertical-align: bottom;
+        border-bottom: 2px solid var(--border-2);
+    }
 }
 
-td, th {
-    border: 1px solid var(--foreground);
-    padding: 5px 10px;
-    text-align: center;
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+  text-align: center;
 }
 
 details {
-    border: 1px solid #aaa;
+    border: 1px solid var(--border-2);
     border-radius: 4px;
     padding: .5em .5em 0;
 }
@@ -86,19 +115,25 @@ details[open] {
 }
 
 details[open] summary {
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid var(--border-2);
     margin-bottom: .5em;
 }
 
 blockquote {
-    background-color: #32302f;
-    border-left: 4px solid #bd6f3e;
+    background-color: var(--background);
+    border-left: 4px solid var(--primary);
+}
+
+@import 'prism-global.scss';
+
+[data-theme='light'] {
+    @import 'prism-one-light.scss';
 }
 
 [data-theme='dark'] {
     @import 'gruvbox-dark.scss';
 }
 
-[data-theme='light'] {
-    @import 'gruvbox-light.scss';
+[data-theme='crimson'] {
+    @import 'prism-crimson.scss';
 }

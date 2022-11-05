@@ -109,16 +109,81 @@ We want to rewrite `x + y` using `x ^ y` and `x & y`.
 What you can do is make a table of all possible input combinations and the value of the boolean expressions (`x & y`, `x ^ y`) and expression you want to rewrite (`x + y`).
 We will assume `x` and `y` are 2-bit numbers.
 
-| x | y | x ^ y | x & y | x + y |
-| --- | --- | --- | --- | --- |
-| 0 | 0 | 0 | 0 | 0 |
-| 0 | 1 | 1 | 0 | 1 |
-| 0 | 2 | 2 | 0 | 2 |
-| 0 | 3 | 3 | 0 | 3 |
-| 1 | 0 | 1 | 0 | 1 |
-| 1 | 1 | 0 | 1 | 2 |
-| .. | .. | .. | .. | .. |
-| 3 | 3 | 0 | 3 | 6 |
+<code>
+<table style="width: 50%">
+  <colgroup>
+    <col style="width: 3em">
+    <col style="border-right: 2px solid var(--border-2); width: 3em">
+  </colgroup>
+  <thead style>
+    <tr>
+      <th>x</th>
+      <th>y</th>
+      <th>x ^ y</th>
+      <th>x & y</th>
+      <th>x + y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+      <td>..</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</code>
 
 You can verify that indeed `(x ^ y) + 2 * (x & y)` equals `x + y`.
 
@@ -148,12 +213,53 @@ For example bit i of `x * y` depends on a lot of bits and not just bit i of `x` 
 This property of boolean operations makes it possible to restrict the inputs we have to consider to just 0 and 1 for each input (I won't prove this here).
 In the example above, we would only have the following table with 4 rows instead of 16 or in general $2^m$ instead of $2^{mn}$.
 
-| x | y | x ^ y | x & y | x + y |
-| --- | --- | --- | --- | --- |
-| 0 | 0 | 0 | 0 | 0 |
-| 0 | 1 | 1 | 0 | 1 |
-| 1 | 0 | 1 | 0 | 1 |
-| 1 | 1 | 0 | 1 | 2 |
+<code>
+<table style="width: 50%">
+  <colgroup>
+    <col style="width: 3em">
+    <col style="border-right: 2px solid var(--border-2); width: 3em">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>x</th>
+      <th>y</th>
+      <th>x ^ y</th>
+      <th>x & y</th>
+      <th>x + y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</code>
 
 `x + y` is not bitwise, why is it still allowed?
 That's because the set of functions allowed is actually slightly bigger.
@@ -267,7 +373,7 @@ int c(int x, int y) {
 ```
 
 # What's next?
-If you want to try this you can check out my implementation in rust [here](https://github.com/plzin/mba).
-Eventually I'd like to compile it to WASM and have a demo here but that is future work.
-The next post will be about solving linear systems over $\mathbb{Z}/n\mathbb{Z}$ and should hopefully come soon 😅.
+If you want to try this for yourself, check out my web interface [here](https://plzin.github.io/mba-wasm/).
+My initial implementation using arbitrary precision integers can be found [here](https://github.com/plzin/mba).
+The [next post](/posts/linear-systems-mod-n) is about solving linear systems over $\mathbb{Z}/n\mathbb{Z}$.
 

@@ -166,7 +166,11 @@ Analogously there also exist negative infinitesimals and negative infinites.
 
 Here is an illustration from [Wikipedia](https://en.wikipedia.org/wiki/Hyperreal_number):
 
+<div style="text-align: center">
+
 ![](https://upload.wikimedia.org/wikipedia/commons/5/53/N%C3%BAmeros_hiperreales.png)
+
+</div>
 
 When Leibnitz and Newton introduced calculus they used infinitesimals informally.
 For example the derivative of a function $y$ with respect to $x$ is $\frac{\mathrm{d}y}{\mathrm{d}x}$,

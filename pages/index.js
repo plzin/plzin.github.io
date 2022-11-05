@@ -20,9 +20,7 @@ export default function Home({ postsData, style }) {
                 <ul className={utilStyles.list}>
                     {postsData.map(({ id, date, title }) => (
                         <li className={utilStyles.listItem} key={id}>
-                            <Link href={`/posts/${id}`}>
-                                <a dangerouslySetInnerHTML={{ __html: title }} />
-                            </Link>
+                            <Link href={`/posts/${id}`} dangerouslySetInnerHTML={{ __html: title }}></Link>
                             <br />
                             <small className={utilStyles.lightText}>
                                 <Date dateString={date} />
