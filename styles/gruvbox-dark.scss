@@ -20,11 +20,6 @@ code[class*="language-"] ::selection {
 	background: lighten(#32302f, 4%);
 }
 
-pre[class*="language-"] {
-	background: #32302f; /* bg0_h */
-    border-left: 4px solid #bd6f3e;
-}
-
 .token.comment,
 .token.prolog,
 .token.cdata {

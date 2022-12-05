@@ -1,5 +1,5 @@
 ---
-title: 'Mixed boolean-arithmetic (Part 2): Systems of linear equations mod n'
+title: 'Mixed Boolean-Arithmetic (Part 2): Systems of linear equations mod n'
 date: '2022-10-17'
 macros:
   - x: \mathbf{x}

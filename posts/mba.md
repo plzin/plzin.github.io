@@ -1,5 +1,5 @@
 ---
-title: 'Mixed boolean-arithmetic (Part 1): Introduction'
+title: 'Mixed Boolean-Arithmetic (Part 1): Introduction'
 date: '2022-06-07'
 ---
 
@@ -63,7 +63,7 @@ int what(int x, int y, int z) {
 }
 ```
 
-It again computer `x + y`. The value of `z` does not matter.
+It again computes `x + y`. The value of `z` does not matter.
 In this series of posts I will explain how you can do that (obfuscation) and possibly also how you can go undo (deobfuscate) them.
 This post will go over the basics and explain how these expressions are generated.
 There will be two problems whose solution will be presented in the following two blog posts and they will use some algebra ([rings](https://en.wikipedia.org/wiki/Ring_(mathematics)), [ideals](https://en.wikipedia.org/wiki/Ideal_(ring_theory))).

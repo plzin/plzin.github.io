@@ -7,6 +7,7 @@
     --link-clicked: #1868d0;
     --border: #b0b0b0;
     --border-2: #909090;
+    --selection: #e8e8e8;
 }
 
 [data-theme='dark'] {
@@ -18,17 +19,19 @@
     --link-clicked: #e08000;
     --border: #57524d;
     --border-2: #625c53;
+    --selection: #404040;
 }
 
 [data-theme='crimson'] {
     --background: #171717;
     --foreground: #e0e0e0;
     --primary: #ca163a;
-    --bg-2: #1a1a1a;
+    --bg-2: #1d1d1d;
     --link: var(--primary);
     --link-clicked: #ff1b48;
     --border: #303030;
     --border-2: #383838;
+    --selection: #303030;
 }
 
 html,
@@ -41,6 +44,10 @@ body {
     font-size: 18px;
     background-color: var(--background);
     color: var(--foreground);
+}
+
+::selection {
+    background-color: var(--selection);
 }
 
 * {
@@ -98,6 +105,11 @@ th {
   text-align: center;
 }
 
+ul {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
 details {
     border: 1px solid var(--border-2);
     border-radius: 4px;
@@ -122,6 +134,45 @@ details[open] summary {
 blockquote {
     background-color: var(--background);
     border-left: 4px solid var(--primary);
+}
+
+div.theorem {
+    background-color: var(--bg-2);
+    padding: 0.2em 0.5em 0.4em 0.7em;
+    //border: 1px solid var(--border);
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    border-left: 4px solid var(--primary);
+    width: 100%;
+
+    span:first-child {
+        font-family: serif;
+        font-size: 1.05em;
+        font-variant-caps: small-caps;
+        margin-right: 0.5em;
+    }
+
+    div:first-child {
+        font-family: serif;
+        font-size: 1.05em;
+        font-variant-caps: small-caps;
+    }
+}
+
+//.qed-line {
+//    display: flex;
+//    justify-content: space-between;
+//
+//    &::after {
+//        text-align: right;
+//        content: "◼";
+//    }
+//}
+div.qed-line {
+    text-align: right;
+    &::after {
+        content: "◼";
+    }
 }
 
 @import 'prism-global.scss';

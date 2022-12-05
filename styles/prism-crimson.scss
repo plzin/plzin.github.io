@@ -29,11 +29,6 @@ code[class*="language-"] ::selection {
 	background: #282828;
 }
 
-pre[class*="language-"] {
-	background: #1a1a1a;
-    border-left: 4px solid var(--duo-2);
-}
-
 .token.comment,
 .token.prolog,
 .token.cdata {
