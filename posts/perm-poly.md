@@ -1,6 +1,6 @@
 ---
 title: 'Mixed Boolean-Arithmetic (Part 3): Binary Permutation Polynomials'
-date: '2022-12-5'
+date: '2022-12-05'
 macros:
     - Z: \mathbb{Z}
     - P: \Z_n[X]
