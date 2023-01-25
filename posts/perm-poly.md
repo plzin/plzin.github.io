@@ -264,7 +264,7 @@ In the language of homomorphisms, we are searching for $\ker\varphi$ which is an
 Remember that $\varphi$ is the homomorphism mapping polynomial expressions to functions.
 We will call this ideal the zero ideal$$\ZI\coloneqq \ker\varphi$$
 Note that this deviates from the usual meaning of "zero ideal", which is the boring ideal $\{0\}$.
-By the the [(third) isomorphism theorem](https://en.wikipedia.org/wiki/Isomorphism_theorems),
+By the the [(first) isomorphism theorem](https://en.wikipedia.org/wiki/Isomorphism_theorems),
 $\PF\cong\P/\ZI$, which means we can uniquely represent a polynomial function by representatives
 that we will later call "reduced polynomials".
 Of course, $\ZI$ is infinite (every non-zero ideal in $\P$ is),

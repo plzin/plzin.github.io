@@ -1,6 +1,8 @@
 ---
 title: 'Mixed Boolean-Arithmetic (Part 1): Introduction'
 date: '2022-06-07'
+macros:
+  - Z: \mathbb{Z}
 ---
 
 What does the following function do?
@@ -377,3 +379,177 @@ If you want to try this for yourself, check out my web interface [here](https://
 My initial implementation using arbitrary precision integers can be found [here](https://github.com/plzin/mba).
 The [next post](/posts/linear-systems-mod-n) is about solving linear systems over $\mathbb{Z}/n\mathbb{Z}$.
 
+<hr>
+
+# The Fundamental Theorem of Mixed Boolean-Arithmetic
+This section will be a lot more formal and require some algebra.
+
+Let $\Z_2=\{0, 1\}$ be the ring of integers mod 2.
+Let $w\in\mathbb{N}$ be the integer width, i.e. the number of bits in an integer.
+Let $\Z_{2^w}=\{0,\dots,2^w-1\}$ be the ring of integers mod $2^w$, i.e. the $w$-bit integers.
+To be completely formally correct, we will define the function
+$$
+\begin{align}
+  \beta\colon\Z_2 &\to\Z_{2^w}\\
+  0&\mapsto 0\\
+  1&\mapsto 1
+\end{align}
+$$
+which basically lets us interpret an element of $\Z_2$ as an element of $\Z_{2^w}$.
+This helps to avoid some confusion, e.g. $\beta(-1)\neq -\beta(1)$ (for $w>1$).
+
+Let $\Z_2^w=\Z_2\times\dots\times\Z_2$ be the ring of $\Z_2$-sequences of length $w$,
+i.e. vectors/lists of $w$ bits.
+Note that although $\Z_{2^w}$ and $\Z_2^w$ have the same number of elements, they are not isomorphic (for $w>1$),
+since their additive (and multiplicative) groups are not isomorphic.
+Addition in $\Z_{2^w}$ is just integer addition mod $2^w$,
+whereas in $\Z_2^w$ addition is the XOR operation.
+(Multiplication in $\Z_2^w$ is the logical AND).
+However, we can define the obvious bijection between them:
+$$
+\begin{align}
+  \varphi\colon\Z_2^w &\to\Z_{2^w}\\
+  (b_w,\dots,b_1)&\mapsto\sum_{i=1}^w\beta(b_i)2^{i-1}
+\end{align}
+$$
+This is just interpreting the sequence of bits as the binary representation of an integer,
+e.g. for $w=4$, $\varphi (0, 0, 1, 1) = 3$ or $\varphi^{-1}(6)=(0, 1, 1, 0)$.
+It is not a ring homomorphism.
+
+This function allows us to extend an $n$-ary function $f: \Z_2^n\to\Z_2$
+to a function $f_*: \Z_{2^w}^n\to\Z_{2^w}$.
+The notation is slightly confusing here (though it is completely consistent).
+A function $\Z_2^n\to\Z_2$ should be thought of as taking $n$ inputs
+in $\Z_2$ and mapping them to a value in $\Z_2$, instead of a function
+taking a single sequence of $n$ bits, although both views are of course equivalent.
+The idea of this extension is that the function will be separately applied to each bit.
+These are the *bitwise* functions that were informally introduced in the post.
+For example the logical and $\land$ is a binary (2-ary, i.e. it takes two inputs) function on bits (i.e. elements of $\Z_2$).
+E.g. $1\land 0=0$.
+We want to extend this to a function on $w$-bit integers, e.g. $3\land 2 = 2$.
+The extension will be in two steps.
+
+The extension to $\Z_2^w$ is defined as
+$$
+\begin{align}
+  f'\colon(\Z_2^w)^n &\to\Z_2^w\\
+  (b_{1,w},\dots,b_{1,1}),\dots,(b_{n,w},\dots,b_{n,1})
+  &\mapsto(f(b_{1,w},\dots,b_{n,w}),\dots, f(b_{1,1}, \dots, b_{n, 1}))
+\end{align}
+$$
+This definition looks more confusing than it actually is.
+It just means we apply $f$ to the first bit of each input
+and the result will be the first bit of the output and so on.
+The extension to $\Z_{2^w}$ is then defined as
+$$
+\begin{align}
+  f_*\colon(\Z_{2^w})^n &\to\Z_{2^w}\\
+  x_1, \dots, x_n&\mapsto\varphi(f'(\varphi^{-1}(x_1), \dots, \varphi^{-1}(x_n)))
+\end{align}
+$$
+Again, this simply means converting each integer into its binary representation,
+applying $f'$ to the sequence, which means applying $f$ to each bit,
+and converting the resulting sequence to an integer again.
+Using our $\land$ example on 2-bit integers:
+$$3\land_* 2 = \varphi((1, 1)\land' (1, 0)) = \varphi(1\land 1, 1\land 0) = \varphi(1, 0) = 2$$
+We can now formally define the meaning of bitwise functions.
+A function $g: \Z_{2^w}^n\to\Z_{2^w}$ is called a bitwise function,
+if there exists an $f: \Z_2^n\to\Z_2$ such that $g=f_*$.
+
+More importantly, we are now ready to formally define linear MBA functions.
+<div class="theorem">
+<div>Definition: Linear Mixed Boolean-Arithmetic Function</div>
+A function $g: \Z_{2^w}^n\to\Z_{2^w}$ is called a linear mixed boolean-arithmetic function,
+if it can written in the form
+$$f(x_1,\dots,x_n)=\sum_{i=1}^m c_if_{i*}(x_1,\dots,x_n)$$
+for some constants $c_i\in\Z_{2^w}$ and some functions $f_i: \Z_2^n\to\Z_2$ and $m\in\mathbb{N}$.
+In other words, it is a linear combination of bitwise functions.
+</div>
+
+It is time for the most important theorem.
+
+<div class="theorem">
+<div>Theorem: The Fundamental Theorem of (Linear) Mixed Boolean-Arithmetic</div>
+A linear MBA function $g:\Z_{2^w}^n\to\Z_{2^w}$ is uniquely determined by its values
+on $\{0, -1(=2^w-1)\}^n$ (or $\{0, 1\}^n$).
+</div>
+
+To give a concrete example of how this is useful.
+Suppose we are given two linear MBA functions $f, g: \Z_{2^{32}}\times\Z_{2^{32}}\to\Z_{2^{32}}$.
+We only have to check the following equalities to conclude they are equal everywhere:
+$f(0, 0)=g(0, 0), f(0, -1)=g(0, -1), f(-1, 0)=g(-1, 0), f(-1, -1)=g(-1, -1)$.
+A priori, we have to compare the values for all $2^{64}$ inputs.
+
+Proof:
+Note that 0 and -1 are the numbers that only have 0 or 1 in their binary representation.
+Thus an input $\mathbf{x}\in\{0, -1\}^n$ has the form that $x_i=\varphi(b_i, b_i, \dots, b_i)$,
+i.e. each input number $x_i$ consists only of the same bit $b_i$.
+We will define $b^w=\varphi(b, \dots, b)=-\beta(b)$ to be the $w$-bit integer
+whose binary representation is just $b$s.
+The notation is sort of overloaded because $b^w$ could also be interpreted as $b\cdot\ldots\cdot b$,
+but we will need it just for this proof and we will never use the this interpretation.
+
+$$
+\begin{align}
+g(b_1^w, \dots, b_n^w)&=\sum_{i=1}^m c_if_{i*}(b_1^w, \dots, b_n^w)\\
+&=\sum_{i=1}^m c_i\varphi(f'_i((b_1, \dots, b_1), \dots, (b_n, \dots, b_n)))\\
+&=\sum_{i=1}^m c_i\varphi((f_i(b_1, \dots, b_n)), \dots, (f_i(b_1, \dots, b_n)))\\
+&=\sum_{i=1}^m c_i\sum_{j=1}^w2^{j-1}\beta(f_i(b_1, \dots, b_n))\\
+&=\sum_{i=1}^m c_i\beta(f_i(b_1, \dots, b_n))\sum_{j=1}^w2^{j-1}\\
+&=\sum_{i=1}^m c_i\beta(f_i(b_1, \dots, b_n))(-1)\\
+&=-\sum_{i=1}^m c_i\beta(f_i(b_1, \dots, b_n))\\
+\end{align}
+$$
+So for inputs of that form, the result is just minus one times the sum of those $c_i$
+where $f_i(b_1,\dots, b_n)=1$. We will need this result in a second.
+
+We will now consider an arbitrary input, i.e. $\varphi(x_i)=(b_{i, 1},\dots,b_{i, w})$.
+$$
+\begin{align}
+g(x_1, \dots, x_n)&=\sum_{i=1}^m c_if_{i*}(x_1, \dots, x_n)\\
+&=\sum_{i=1}^m c_i\varphi(f'_i((b_{1, w}, \dots, b_{1, 1}), \dots, (b_{n,w}, \dots, b_{n,1})))\\
+&=\sum_{i=1}^m c_i\varphi((f_i(b_{1, w}, \dots, b_{n, w})), \dots, (f_i(b_{1, 1}, \dots, b_{n, 1})))\\
+&=\sum_{i=1}^m c_i\sum_{j=1}^w2^{j-1}\beta(f_i(b_{1, j}, \dots, b_{n, j}))\\
+&=\sum_{j=1}^w2^{j-1}\sum_{i=1}^m c_i\beta(f_i(b_{1, j}, \dots, b_{n, j}))\\
+&=-\sum_{j=1}^w2^{j-1}g(b_{1,j}^w,\dots,b_{n,j}^w)\\
+\end{align}
+$$
+
+The last equality is the previous result.
+This means that the value of $g$ on any input depends only on the value of $g$
+at inputs of the form discussed before.
+<div class="qed-line"></div>
+
+In the original paper on MBA, the set $\{0, 1\}^n$ was used.
+Let us quickly prove that the values of the function on this set also uniquely determine
+the function.
+This idea is the same, the algebra only slightly more annoying.
+The inputs now have the form $x_i = \varphi (0, \dots, 0, b_i) = \beta(b_i)$.
+The last equality stems from the fact that we view $\Z_2$ as a subset of $\Z_{2^w}$.
+
+$$
+\begin{align}
+g(\beta(b_1), \dots, \beta(b_n))&=\sum_{i=1}^m c_if_{i*}(\beta(b_1), \dots, \beta(b_n))\\
+&=\sum_{i=1}^m c_i\varphi(f'_i((0, \dots, b_1), \dots, (0, \dots, b_n)))\\
+&=\sum_{i=1}^m c_i\varphi((f_i(0, \dots, 0)), \dots, f_i(b_1, \dots, b_n))\\
+&=\sum_{i=1}^m c_i\left(f_i(b_1, \dots, b_n) + \sum_{j=2}^w2^{j-1}f_i(0, \dots, 0)\right)\\
+&=\sum_{i=1}^m c_i\left(f_i(b_1, \dots, b_n) + f_i(0, \dots, 0)\sum_{j=2}^w2^{j-1}\right)\\
+&=\sum_{i=1}^m c_i\left(f_i(b_1, \dots, b_n) - 2f_i(0, \dots, 0)\right)\\
+&=-2\sum_{i=1}^m c_if_i(0, \dots, 0) + \sum_{i=1}^m c_if_i(b_1, \dots, b_n)\\
+&=2g(0, \dots, 0) + \sum_{i=1}^m c_if_i(b_1, \dots, b_n)\\
+\end{align}
+$$
+Overall, we have
+$$\sum_{i=1}^m c_if_i(b_1, \dots, b_n) = g(b_1,\dots,b_n) - 2g(0,\dots,0)$$
+
+Now we will consider general inputs again, i.e. $x_i=\varphi(b_{i, 1}, \dots, b_{i, w})$.
+As we saw before
+$$
+\begin{align}
+g(x_1, \dots, x_n)
+&=\sum_{j=1}^w2^{j-1}\sum_{i=1}^m c_if_i(b_{1, j}, \dots, b_{n, j})\\
+&=\sum_{j=1}^w2^{j-1}(g(b_{1, j},\dots,b_{n, j})-2g(0,\dots,0))\\
+&=2g(0,\dots,0)+\sum_{j=1}^w2^{j-1}g(b_{1, j},\dots,b_{n, j})\\
+\end{align}
+$$
+So again, $g$ at any input only depends on the values of $g$ with 0, 1 inputs.

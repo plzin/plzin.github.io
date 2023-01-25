@@ -54,7 +54,7 @@ code[class*="language-"] ::selection {
 .token.tag .punctuation,
 .token.doctype,
 .token.builtin {
-	color: #fabd2f;
+	color: var(--uno-1);
 }
 
 .token.entity,
