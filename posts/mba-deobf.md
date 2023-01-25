@@ -1,6 +1,6 @@
 ---
 title: 'Mixed Boolean-Arithmetic (Part 4): Deobfuscation'
-date: '2022-12-15'
+date: '2023-01-25'
 macros:
     - b: \mathbf{b}
     - v: \mathbf{v}
