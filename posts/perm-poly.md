@@ -1,6 +1,6 @@
 ---
 title: 'Mixed Boolean-Arithmetic (Part 3): Binary Permutation Polynomials'
-date: '2022-12-05'
+date: '2023-04-24'
 macros:
     - Z: \mathbb{Z}
     - P: \Z_n[X]
@@ -303,7 +303,7 @@ Since $X\mid F$, we can write $F=XQ$.
 We know $f(1)=0$, but on the other hand $f(1)=1\cdot q(1)$, so $q(1)=0$, which implies $(X-1)\mid Q$.
 So overall we can write
 $$F=c\cdot X\cdot (X-1)$$
-We know have to find all $c$ such that $f$ evaluates to zero.
+We now have to find all $c$ such that $f$ evaluates to zero.
 We know that the product $X(X-1)$ will be even, since one of the factors is even.
 It is either zero, in which case any $c$ is okay, or in the "worst case" two (for $x=2$).
 So it suffices to choose $c=\frac{n}{2}$.
@@ -449,28 +449,35 @@ For $w=1$, there are only two permutations, the identity of order one, and swapp
 Let $P\in\Z[X]$ be a permutation polynomial mod $2^w$ with $w>1$.
 We know that $P$ is also a permutation polynomial mod $m=n/2$ by Lemma 3.
 By the induction hypothesis, $p$ has order $2^i$ mod $m$ where $i < w$.
-We have $p^i(x)=x \pmod m$ for all $x\in\Z_m$.
+We have $p^{2^i}(x)=x \pmod m$ for all $x\in\Z_m$.
 We will now try to figure out the order mod $n$.
 Fix an $x\in\Z_m$.
-We have to distinguish between two cases:
+Let $o$ be the smallest integer such that $p^o(x)=x\pmod m$,
+i.e. the length of the cycle containing $x$ mod $m$.
+We know that $o$ is a power of two and less than or equal to $2^i$,
+since the order of the permutation is both a power of two
+and the least common multiple of its cycles lengths.
 
-Suppose $p^i(x)=x\pmod n$.
-By Lemma 4, we know $p^i(x+m)=x+m\pmod n$.
-So $p^i$ maps $x$ and $x+m$ to themselves.
-Obviously, there is no $j < i$ such that $p^j(x)=x\pmod n$ or $p^j(x+m)=x+m\pmod n$,
-as that would contradict that $i$ is the order mod $m$.
+We now have to distinguish between two cases mod $n$:
 
-Otherwise $p^i(x)=x+m\pmod n$.
-By Lemma 4, we know $p^i(x+m)=x\pmod n$.
-Thus$$p^{2i}(x)=p^i(p^i(x))=p^i(x+m)=x\pmod n$$
-And$$p^{2i}(x+m)=p^i(p^i(x+m))=p^i(x)=x+m\pmod n$$
-Similarly to before, there is no $j < i$ such that $p^j(x)=x+m\pmod n$ or $p^j(x+m)=x\pmod n$,
-as that would also contradict that $i$ is the order mod $m$.
+Suppose $p^o(x)=x\pmod n$.
+By Lemma 4, we know $p^o(x+m)=x+m\pmod n$.
+So $p^o$ maps $x$ and $x+m$ to themselves.
+Obviously, there is no $j < o$ such that $p^j(x)=x\pmod n$ or $p^j(x+m)=x+m\pmod n$,
+as that would contradict that $o$ is the cycle length of $x$ mod $m$.
 
-If all $x\in\Z_m$ fall into the first case, $p$ also has order $i$ mod $n$,
-which is a power of two $\leq n$ by the induction hypothesis.
-If any $x\in\Z_m$ falls into the second case, $p$ has order $2i$ mod $n$,
-which is of course also a power of two and since $i\leq m$, $2i\leq 2m=n$.
+Otherwise $p^o(x)=x+m\pmod n$.
+By Lemma 4, we know $p^o(x+m)=x\pmod n$.
+Thus$$p^{2o}(x)=p^o(p^o(x))=p^o(x+m)=x\pmod n$$
+And$$p^{2o}(x+m)=p^o(p^o(x+m))=p^o(x)=x+m\pmod n$$
+As before, there is no $j < o$ such that $p^j(x)=x+m\pmod n$ or $p^j(x+m)=x\pmod n$.
+There can also be no $o < j < 2o$ such that $p^j(x)=x\pmod n$,
+since otherwise $p^j(x)=p^{2o-j}(p^o(x))=p^{2o-j}(x)=x\pmod m$,
+which, again, contradicts that $o$ is the cycle length of $x$ mod $m$.
+
+So the cycle length of $x$ mod $n$ has either stayed the same or doubled.
+It now easily follows that the order of $p$ mod $n$ has either stayed the same or doubled.
+In either case, it is a power of two less than $n$.
 <div class="qed-line"></div>
 
 Now, the idea is that $f^{2^w}$ can be computed in $w$ compositions instead of $2^w$,
@@ -544,8 +551,8 @@ So overall the step can be written as:
 $$G_{i+1}=G_i-G_i'\cdot((F\circ G_i)-X)$$
 
 [\[4\]](#ref-4) cites some french paper for the proof that this will work, which I can't read.
-When I find the motivation, I will attempt to prove it myself.
-I think $p$-adic analysis/Hensel's lemma might be good starting points.
+Maybe someone who knows some $p$-adic analysis can prove this.
+In particular, I think some generalization of Hensel's lemma can probably prove this.
 
 Experimentally, this always finds a solution with $G_0=X$.
 And the number of iterations is about $\log_2 w = \log_2\log_2 n$.
@@ -658,7 +665,7 @@ and come to the conclusion that the algorithm has quadratic complexity in $w$.
 # Conclusion
 We've seen the most important theory on binary polynomials:
 - We have a characterization of binary permutation polynomials, which also allows us to generate random permutation polynomials
-- We can decide when two binary polynomials compute the same function
+- We can decide when two binary polynomials compute the same function.
 - Given a binary permutation polynomial, we can efficiently find an inverse.
 
 <hr>

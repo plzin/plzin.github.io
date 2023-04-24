@@ -1,6 +1,6 @@
 ---
 title: 'Mixed Boolean-Arithmetic (Part 4): Deobfuscation'
-date: '2023-01-25'
+date: '2023-04-24'
 macros:
     - b: \mathbf{b}
     - v: \mathbf{v}
@@ -8,11 +8,14 @@ macros:
     - Z: \mathbb{Z}
 ---
 
-You should read [part 1](/posts/mba), before coming here, but reading [part 2](/posts/linear-systems-mod-n)
-or [3](/posts/perm-poly) is not required.
-Part 2 and 3 were very technical and proof heavy, whereas this will be more hand-wavy.
-I want anyone who encounters MBA in practice to be able to read this post and be able
-to deobfuscate it without knowing all the theory of proofs.
+You should read [Part 1](/posts/mba), before coming here, but reading [Part 2](/posts/linear-systems-mod-n)
+is not required.
+If you encounter permutation polynomials then you should probably read [Part 3](/posts/perm-poly)
+which should be enough to figure out how to deobfuscate them.
+We will be focusing on linear MBA.
+I will update this post to talk about non-linear MBA at some point,
+but generally it is very difficult and I know of no better way
+than trying to invert the techniques for generating non-linear MBA.
 
 Deobfuscation is either easy or hard, depending on what your goal is.
 As always it is not easy to define what a "simplified" or simple expression even is.
@@ -48,45 +51,6 @@ then you could deobfuscate it as a black box.
 One difficulty is verifying that some circuit computes a linear MBA expression, even if it contains (say) polynomials.
 So the first step of the general approach is to find some subexpression that is a linear MBA expression or a polynomial.
 We will now discuss simplifying both of these.
-
-# Binary Polynomials
-A (single variable) polynomial is any expression involving only addition, subtraction, multiplication, (left shifts with constants), and a single variable input.
-A binary polynomial is a polynomial where the data type involved is an n-bit integer.
-You can bring any such expression into the "normal form" you are familiar with
-$$a_nx^n+\ldots+a_1x+a_0$$
-by using associativity, commutativity and (most importantly) the distributive law.
-In Part 3 we found out that (in contrast to polynomial over $\mathbb{R}$)
-there are polynomials with different normal forms that compute the same function,
-or equivalently polynomials with non-zero coefficients that evaluate to zero everywhere.
-These polynomials have the form
-$$P=C_0P_0+\dots+C_dP_d$$
-where the $C_i$ are polynomials and the $P_i$ are
-$$P_i=\frac{n}{\gcd(n, i!)}\prod_{j=0}^i (x-j)$$
-and $d$ is the smallest integer such that the leading coefficient of $P_d$ is one.
-(When your integer width $w$ is a power of two, e.g. 8, 16, 32, etc., then $d=w+2$).
-This allows you to reduce any polynomial to a canonical representative,
-which can be used to decide whether two polynomials compute the same function.
-The downside of this is that you have to bring the polynomial into the normal form,
-which can make it exponentially bigger.
-```c
-int poly(int x) {
-    int a = x + 1;
-    a = a * a;
-    a = a * a;
-    a = a * a;
-    // ...
-    return a;
-}
-```
-This function computes $(x+1)^{2^n}$ where $n$ is the number of times that the `a = a * a` line is repeated.
-Expanding this in order to reduce the polynomial is not fun (very slow), but there is a better way.
-
-In Part 3 we also saw that such a polynomial is also determined by its values on $0,\dots,d-1$.
-This allows us to solve an interpolation problem which will give us the coefficients of a polynomial
-of degree less than $d$, which we can then reduce to the minimal one.
-
-These two ways should always let you simplify any such expression, especially the ones that occur in the
-MBA expressions that can automatically be generated using the methods in Part 3.
 
 # Linear MBA
 Simplifying linear MBA is the more difficult problem.

@@ -1,6 +1,6 @@
 ---
 title: 'Mixed Boolean-Arithmetic (Part 2): Systems of linear equations mod n'
-date: '2022-10-17'
+date: '2023-04-24'
 macros:
   - x: \mathbf{x}
   - b: \mathbf{b}
@@ -372,7 +372,7 @@ You can find the proof of everything we did [here](https://en.wikipedia.org/wiki
 Now, to do the next step of back-substitution, we substitute our solution into the equation of the next row.
 $$2x_2+3x_3=2x_2+3(2+3k)=2x_2+3k=4\pmod 6$$
 We have an additional variable!
-This can still be solved by generalizing the method we did above, but I won't do that here.
+This can still be solved by generalizing the method we used above, but I won't do that here.
 I just wanted to show you that things get more annoying.
 If we step away from trying to solve this algorithmically, we can see that $k$ must be even, because otherwise the sum will be odd, so $k=2l$.
 Then we have the same problem as before and know $x_2=2+3m$.
@@ -389,9 +389,9 @@ It might seem counterintuitive at first, we've just seen that the back-substitut
 And it's true that this method will also allow you to solve the diophantine equations for back-substitution,
 it will actually end up giving us a solution and a basis for the kernel very easily.
 
-Formally a system of linear diophantine equations is just $\A\x=\b$ where all entries are in $\Z$.
+Formally, a system of linear diophantine equations is just $\A\x=\b$ where all entries are in $\Z$.
 Translating our original problem into this form is rather straightforward.
-Recall, that $a=b\pmod n$ iff $\exists k\in\Z: a + kn = b$.
+Recall that $a=b\pmod n$ iff $\exists k\in\Z: a + kn = b$.
 Using the example from the beginning, the matrix
 
 $$
@@ -432,7 +432,7 @@ So all we have to do, is append $n\mathbf{I}_r$ to the right of $\A$ to get a pr
 which, as a ring, have much nicer properties than the integers mod n.
 Now, we have to solve the system of linear diophantine equations which will be the topic of the next section.
 
-Before we dive into that, I want to talk about how to go from a solution to the diophantine equations to a solution for the original system,
+Before we delve into that, I want to talk about how to go from a solution to the diophantine equations to a solution for the original system,
 which is rather simple.
 Suppose $\x'$ is a solution to $\A'\x'=\b$, then $\x'$ contains entries for the modulus which we just have to truncate.
 The same goes for the basis vectors of the kernel, but it is possible to introduce linear dependence[^2] here.
@@ -447,9 +447,10 @@ To simplify notation, the matrix is $\A$ again, so we are solving $\A\x=\b$ wher
 We are going to compute the [Hermite Normal Form (HNF)](https://en.wikipedia.org/wiki/Hermite_normal_form) of a certain matrix, that we are going to set up in the next section.
 The Hermite normal form is a row echelon form of the matrix where the pivots are positive and the elements above each pivot are positive and smaller than the pivot.
 
-A simple algorithm for computing it is very similar to the row reduction algorithm for $\Z_n$-matrices we've seen above but there are some differences.
+A simple algorithm for computing it is very similar to the row reduction algorithm
+for $\Z_n$-matrices that we've seen above but there are some differences.
 First, let's figure out what elementary row operations are allowed.
-Of course swapping rows is okay and adding a multiple of one row to another is as well.
+Of course, swapping rows is okay and adding a multiple of one row to another is as well.
 We already found out that multiplication of a row by a constant is only okay, if that constant is a unit.
 The only units in $\Z$ are 1 and -1.
 In the $\Z_n$ case, we didn't need multiplication by units at all, but could've used it to accelerate eliminating entries.
@@ -467,7 +468,7 @@ Then we have
 $$\A^{(i+1)}=\mathbf{E}^{(i)}\A^{(i)}$$
 
 In the end the HNF $\H$ is
-$$\H=\A^{(i)}=\mathbf{E}^{(i)}\A^{(i-1)}=\ldots=\mathbf{E}^{(i)}\cdot\ldots\cdot\mathbf{E}^{(0)}\A$$
+$$\H=\A^{(i+1)}=\mathbf{E}^{(i)}\A^{(i)}=\ldots=\mathbf{E}^{(i)}\cdot\ldots\cdot\mathbf{E}^{(0)}\A$$
 
 Let $\U$ be the overall transformation matrix, i.e.
 $$\U=\mathbf{E}^{(i)}\cdot\ldots\cdot\mathbf{E}^{(0)}$$
@@ -484,7 +485,7 @@ Important to note is that – as the "normal form" implies – $\H$ is unique, i
 #### Solving Linear Diophantine Equations
 Computing the HNF of $\A$ doesn't give us the solutions directly.
 But I promised a way to find the solutions using only the HNF.
-The approach is outlined in [this paper](https://citeseerx.ist.psu.edu/viewdoc/versions?doi=10.1.1.357.7741).
+The approach is outlined in [this paper](http://www.numbertheory.org/PDFS/ax=b.pdf).
 Basically we construct the matrix
 
 $$
@@ -502,7 +503,8 @@ $$\sum_{i=1}^c x_i\mathbf{a}_i = \b$$
 
 where $\mathbf{a}_i$ is the i-th column of $\A$.
 Since the columns of $\A$ appear as rows in $\G$ (which is important because we are using row operations), we can eliminate $\b^T$ using the coefficients $x_i$.
-So all in all, $\H$ will contain a row zeros, except for the last entry which is a 1 that is inherited from $\G$.
+So all in all, $\H$ will contain a row of zeros,
+except for the last entry which is a 1 that is inherited from $\G$.
 Moreover, $\H$ will contain the HNF of $\A^T$ which might contain rows of zero which will be moved to the bottom.
 Let $\H'$ be the non-zero rows of the HNF of $\A^T$, then over all $\H$ takes the form:
 
@@ -832,7 +834,7 @@ $$x=\sum_{i=1}^n r_ig_i$$
 $G$ is a basis if $G$ is a generating set for $M$ and $G$ is linearly independent, i.e.
 $$\sum_{i=1}^n r_ig_i = 0\implies r_1, \dots, r_n = 0$$
 
-(These definitions are easily extended for infinite $G$).
+(These definitions are easily extended to infinite $G$).
 Not every module has a basis (if it has one, it is called a [free module](https://en.wikipedia.org/wiki/Free_module)) and [not all bases have to have the same cardinality](https://en.wikipedia.org/wiki/Invariant_basis_number),
 which might give you an how much stranger (and more interesting?) modules are.
 Both $\Z^m$ and $(\Z_n)^m$ have the obvious basis and all other bases have the same cardinality.
@@ -847,7 +849,10 @@ $$
 $$
 
 Looking at the solution from earlier (or by computing the HNF), we find that the kernel is
-$$\left\{\left[\begin{array}{c}0\\0\end{array}\right], \left[\begin{array}{c}3\\3\end{array}\right]\right\}$$
+$$
+\left\{\left[\begin{array}{c}0\\0\end{array}\right],
+\left[\begin{array}{c}3\\3\end{array}\right]\right\}
+$$
 which is generated by $g=\left[\begin{array}{c}3\\3\end{array}\right]$.
 
 But $\{g\}$ is not a basis because it is linearly dependent:
@@ -856,6 +861,6 @@ So while the kernel will always be a submodule, it need not have a basis.
 Furthermore, linear dependence does not necessarily mean that a vector can be removed from the generating set, as seen in this example.
 Instead, what we really want is a minimal generating set ([which does not always exist](https://mathoverflow.net/questions/33540/existence-of-a-minimal-generating-set-of-a-module),
 though in our finite cases it of course does), but we would need an efficient way to compute it.
-Since I don't really need it for mixed boolean-arithmetic, I just remove zero vectors which are obviously unnecessary, and I don't know if an algorithm for this problem has been published.
+I don't really need this for MBA and I don't know if an algorithm for this problem has been published.
 It might be an interesting problem to think about.
 
