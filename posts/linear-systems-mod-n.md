@@ -836,7 +836,7 @@ $$\sum_{i=1}^n r_ig_i = 0\implies r_1, \dots, r_n = 0$$
 
 (These definitions are easily extended to infinite $G$).
 Not every module has a basis (if it has one, it is called a [free module](https://en.wikipedia.org/wiki/Free_module)) and [not all bases have to have the same cardinality](https://en.wikipedia.org/wiki/Invariant_basis_number),
-which might give you an how much stranger (and more interesting?) modules are.
+which might give you an idea of how much stranger (and more interesting?) modules are.
 Both $\Z^m$ and $(\Z_n)^m$ have the obvious basis and all other bases have the same cardinality.
 
 Let's look at the example from earlier over $\Z_6$
@@ -860,7 +860,10 @@ $2g=0$, so we have a non-trivial linear combination of 0.
 So while the kernel will always be a submodule, it need not have a basis.
 Furthermore, linear dependence does not necessarily mean that a vector can be removed from the generating set, as seen in this example.
 Instead, what we really want is a minimal generating set ([which does not always exist](https://mathoverflow.net/questions/33540/existence-of-a-minimal-generating-set-of-a-module),
-though in our finite cases it of course does), but we would need an efficient way to compute it.
-I don't really need this for MBA and I don't know if an algorithm for this problem has been published.
-It might be an interesting problem to think about.
+though in our finite cases it of course does), but we would need a way to compute it.
+I don't really need this for MBA so I don't bother,
+but you can find a minimal generating set by computing the HNF (or our ill-defined "HNF" mod n)
+of the matrix that contains the vectors of the generating set as columns.
+All the non-zero columns of the result will generate the same submodule
+with as few vectors as possible.
 
