@@ -96,9 +96,9 @@ Before we discuss how to choose rewrite operations more generally,
 we will consider the same example with the slightly bigger set of rewrite operations:
 `x`, `y`, `~x`, `~y`, `1`.
 The solutions to the resulting system have the following form
-$$\mathbf{c} = \left[\begin{array}{c}-93\\-38\\-94\\-39\\-133\\\end{array}\right]
+$$\mathbf{c} = \left[\begin{array}{c}37\\-24\\36\\-25\\-11\\\end{array}\right]
 + a_1\left[\begin{array}{c}-97\\75\\-97\\75\\22\\\end{array}\right]
-+ a_2\left[\begin{array}{c}-101\\38\\-101\\38\\117\\\end{array}\right]$$
++ a_2\left[\begin{array}{c}101\\38\\101\\38\\117\\\end{array}\right]$$
 Now we have many solutions, e.g. `-93*x - 38*y - 94*~x - 39*~y - 133`.
 Since we are concerned with deobfuscation, this is not good enough,
 we want the "smallest" solution.
