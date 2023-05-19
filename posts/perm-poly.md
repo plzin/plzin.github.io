@@ -471,11 +471,12 @@ By Lemma 4, we know $p^o(x+m)=x\pmod n$.
 Thus$$p^{2o}(x)=p^o(p^o(x))=p^o(x+m)=x\pmod n$$
 And$$p^{2o}(x+m)=p^o(p^o(x+m))=p^o(x)=x+m\pmod n$$
 As before, there is no $j < o$ such that $p^j(x)=x+m\pmod n$ or $p^j(x+m)=x\pmod n$.
-There can also be no $o < j < 2o$ such that $p^j(x)=x\pmod n$,
-since otherwise $p^j(x)=p^{2o-j}(p^o(x))=p^{2o-j}(x)=x\pmod m$,
+There can also be no $o < j < 2o$ such that $p^j(x)=x\pmod n$ or $p^j(x+m)=x+m\pmod n$,
+since otherwise $p^j(x)=p^{j-o}(p^o(x))=p^{j-o}(x)=x\pmod m$,
 which, again, contradicts that $o$ is the cycle length of $x$ mod $m$.
 
 So the cycle length of $x$ mod $n$ has either stayed the same or doubled.
+And the cycle length of $x+m$ mod $n$ is the same as that of $x$.
 It now easily follows that the order of $p$ mod $n$ has either stayed the same or doubled.
 In either case, it is a power of two less than $n$.
 <div class="qed-line"></div>

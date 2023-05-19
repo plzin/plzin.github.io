@@ -45,7 +45,7 @@ If you just want to skip the puzzle, [click here](#Solution)!
 This is a puzzle in a video game called Genshin Impact.
 
 <div>
-  <video style="margin-left: auto;margin-right: auto;margin-bottom: 1em;margin-top: 1em;display: block" width="640" height="300" muted controls>
+  <video style="margin-left: auto; margin-right: auto; margin-bottom: 1em; margin-top: 1em; display: block; width: 100%" muted controls>
     <source src="/videos/GI1.mp4" type="video/mp4">
     A video clip of the puzzle would appear here if your browser supported it.
   </video>
@@ -71,12 +71,12 @@ Let's call the number of times the first stone is hit $x_1$ (similarly for the o
 When the first stone is hit $x_1$ times the state of the system is
 
 $$
-\begin{aligned}
+\begin{align*}
 t_1 &= s_1 + x_1 &\pmod 3\\
 t_2 &= s_2 + x_1 &\pmod 3\\
 t_3 &= s_3 &\pmod 3\\
 t_4 &= s_4 &\pmod 3\\
-\end{aligned}
+\end{align*}
 $$
 
 where $t_i$ is the state of stone $i$ after the hits.
@@ -85,12 +85,12 @@ But here we only considered hitting stone 1.
 When the other stones are hit $x_i$ times, we get the following:
 
 $$
-\begin{aligned}
+\begin{align*}
 t_1 &= s_1 + x_1 + x_2 &\pmod 3\\
 t_2 &= s_2 + x_1 + x_2 + x_3 &\pmod 3\\
 t_3 &= s_3 + x_2 + x_3 + x_4 &\pmod 3\\
 t_4 &= s_4 + x_3 + x_4 &\pmod 3\\
-\end{aligned}
+\end{align*}
 $$
 
 Take your time to confirm this is indeed what we want.
@@ -103,12 +103,12 @@ To solve this puzzle, the final state of every stone needs to be 3 or equivalent
 To get the problem into the form we want, we subtract the initial state $s_i$ in each equation to bring it to the left side.
 
 $$
-\begin{aligned}
+\begin{align*}
 -s_1 &= x_1 + x_2 &\pmod 3\\
 -s_2 &= x_1 + x_2 + x_3 &\pmod 3\\
 -s_3 &= x_2 + x_3 + x_4 &\pmod 3\\
 -s_4 &= x_3 + x_4 &\pmod 3\\
-\end{aligned}
+\end{align*}
 $$
 
 We can use matrix/vector notation to "simplify" this.
@@ -404,18 +404,18 @@ $$
 is equivalent to the following system of congruences
 
 $$
-\begin{align}
+\begin{align*}
 3x_1+5x_2&= 0\pmod 6\\
 4x_1+2x_2&= 2\pmod 6
-\end{align}
+\end{align*}
 $$
 
 which is itself equivalent to
 $$
-\begin{align}
+\begin{align*}
 3x_1+5x_2+6k&= 0\\
 4x_1+2x_2+6l&= 2
-\end{align}
+\end{align*}
 $$
 
 Notice, that we need a new variable for each equation since the factors of the modulus do not depend on each other.
@@ -605,12 +605,12 @@ $$
 We then simplify further by subtracting the second row from the first to reduce the element above the pivot.
 
 $$
-\left[\begin{array}{rr|r}
+\left[\begin{array}{rr}
   2 & 1\\
   0 & 1\\
 \end{array}\right]
 \stackrel{\text{I=I-II}}\rightarrow
-\left[\begin{array}{rr|r}
+\left[\begin{array}{rr}
   2 & 0\\
   0 & 1\\
 \end{array}\right]
@@ -842,7 +842,7 @@ Both $\Z^m$ and $(\Z_n)^m$ have the obvious basis and all other bases have the s
 Let's look at the example from earlier over $\Z_6$
 
 $$
-\left[\begin{array}{rr|r}
+\left[\begin{array}{rr}
   3 & 5\\
   4 & 2\\
 \end{array}\right]

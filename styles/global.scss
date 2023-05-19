@@ -145,14 +145,14 @@ div.theorem {
     border-left: 4px solid var(--primary);
     width: 100%;
 
-    span:first-child {
+    > span:first-child {
         font-family: serif;
         font-size: 1.05em;
         font-variant-caps: small-caps;
         margin-right: 0.5em;
     }
 
-    div:first-child {
+    > div:first-child {
         font-family: serif;
         font-size: 1.05em;
         font-variant-caps: small-caps;
@@ -173,6 +173,14 @@ div.qed-line {
     &::after {
         content: "◼";
     }
+}
+
+.katex {
+    font-size: 1.1em !important;
+}
+
+.katex-display{
+    overflow: auto hidden !important;
 }
 
 @import 'prism-global.scss';

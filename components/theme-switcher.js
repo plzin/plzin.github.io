@@ -12,7 +12,6 @@ export default function ThemeSwitcher() {
     useEffect(() => setMounted(true), [])
 
     if (!mounted) return null
-    console.log(resolvedTheme)
 
     switch (resolvedTheme) {
         case 'light':
