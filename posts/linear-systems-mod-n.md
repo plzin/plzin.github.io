@@ -645,7 +645,7 @@ $$
   3 & 5\\
   4 & 2\\
 \end{array}\right]
-\stackrel{\text{I=I-II}}\rightarrow
+\stackrel{\text{II=II-I}}\rightarrow
 \left[\begin{array}{rr}
   3 & 5\\
   1 & 3\\

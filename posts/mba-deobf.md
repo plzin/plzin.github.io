@@ -178,7 +178,7 @@ where the $e_i$ is the vector with a 1 in the i-th position and 0s everywhere el
 A priori, it is not even clear that this is a lattice and we still need a basis. 
 We can obtain a basis (and thus also a proof that this is in fact a lattice)
 by computing the [HNF](https://en.wikipedia.org/wiki/Hermite_normal_form)
-of the matrix with the columns being the generators.
+of the matrix with the columns/rows being the generators.
 
 It might seem obvious what a small solution is,
 but there are some subtleties to it.

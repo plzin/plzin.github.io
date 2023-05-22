@@ -39,40 +39,46 @@ Why does $0.999\ldots$ equal $1$?
 Well, that's easy: It follows from the definition of real numbers and the way we use decimal numbers to represent real numbers.
 Let me explain.
 
-In school you are usually introduced to real numbers you just think of them as "decimal numbers".
+In school you are usually introduced to real numbers as "decimal numbers".
 For example $1.4$, $0.\overline{3}$ and so on.
 
 Let us try to define the set of real numbers like this:
-$$\mathbb{R} \coloneqq \{\ a_n\dots a_1.b_1b_2b_3\dots\ |\ a_i, b_i\in\{0,\dots,9\}\ \}$$
+$$\mathbb{R} \coloneqq \{\ s\ a_n\dots a_1.b_1b_2b_3\dots\ |\ s\in\{+, -\}, a_i, b_i\in\{0,\dots,9\}\ \}$$
 
-This is just the set of all decimal numbers and I think most high-schoolers would agree that this is the right definition.
+This is just the set of all (infinite strings of) decimal numbers
+and I think most high-schoolers would agree that this is the right definition.
 But it is not.
 If we defined it like this we would have defined $0.\overline{9}$ to be different from $1$.
-They are different elements in our set.
+They are different elements in our set (they are different strings).
+(We also defined 0 to be different from -0, but let us ignore that for now).
 
 Why don't mathematicians define the real numbers like this?
-Because it isn't closed under subtraction $-$.
-What should $1-0.\overline{9}$ be?
-Zero point zero, zero, zero, and after infinitely many zeros a one?
-That thing is simply not in our set. You can have infinitely many digits after the dot, sure,
-but not something after those infinitely many digits, because we just didn't include that thing in our set.
-We could have done that, but that would make things weird wouldn't it?
-(We will get to a number system where something like this **is** possible).
+We would have to define addition, subtraction, multiplication and so on,
+which is not trivial.
+Feel free to try.
+If you do, what is $1-0.\overline{9}$ by your definition?
+You either have to define it to be $0.000...$,
+or something like $0.000...1$.
+In the first case, we have two different elements of our set,
+such that their difference is zero,
+which is unsatisfactory.
+In the second case, the result is not even an element of the set.
+You could include it in the set (and we will get to a number system where something like this is possible),
+but as it stands we only allow infinitely many digits after the dot,
+but not something after those infinitely many digits.
 
-But we can fix this.
-We just define a new equality. Let us call it $\equiv$.
-The correct mathematical jargon would be equivalence relation.
+We can actually fix the first case, by defining a new equality.
+Or in correct mathematical jargon, an equivalence relation.
+Let us call it $\equiv$.
 You can think of it as a function $\mathbb{R} \times \mathbb{R} \mapsto \{\text{equal}, \text{not equal}\}$
 that tells us when two elements should be considered equal.
 (You would then define $\mathbb{R}$ to be the set of equivalence classes, meaning two equal elements don't appear twice in the set).
-
-This equivalence relation would then define that $0.\overline{9} \equiv 1$
+This equivalence relation would define that $0.\overline{9} \equiv 1$
 and also for example $0.36\overline{9} \equiv 0.37$.
-
 You would also have to find definitions of $+$, $\cdot$ and so on, but then you'd have the usual real numbers.
 
 But this is not a very satisfying answer either, because we just defined $1$ to be equal to $0.\overline{9}$.
-The answer to the "question" of a proof would be: By definition of equality on our set.
+The answer to the "question" would be: By definition of equality on our set.
 
 # How do mathematicians define the real numbers?
 There are multiple provably equivalent ways to do this.
@@ -82,20 +88,20 @@ Just to make sure: A rational number is something that can be expressed as a rat
 Basically we are building the real numbers from the rational numbers.
 This might seem strange if you've never seen something like this before, we usually just think of the numbers as existing.
 In formal mathematics you have to build new objects from objects you have already defined.
-Maybe you've seen how to get the complex numbers $\mathbb{C}$ from the real numbers by adjoining $i$ the imaginary root.
+Maybe you've seen how to get the complex numbers $\mathbb{C}$ from the real numbers by adjoining $i$ the imaginary unit.
 You can think of each complex number as a pair of real numbers called the real and imaginary part.
 The following construction is similar, although going from rational to real numbers is a bit more involved.
 
-What is a [cauchy sequence](https://brilliant.org/wiki/cauchy-sequences/)?
+What is a [Cauchy sequence](https://brilliant.org/wiki/cauchy-sequences/)?
 It is just a sequence (i.e. an infinite list) of rational numbers, such that the elements of the sequence get arbitrarily close to each other (I won't make that more precise here).
 
-This is a cauchy sequence that converges to 0:
+This is a Cauchy sequence that converges to 0:
 $$(1, \tfrac{1}{2}, \tfrac{1}{4}, \tfrac{1}{8}, \dots )$$
 
-This is not a cauchy sequence, because neighboring elements never get closer than 1:
+The following is not a Cauchy sequence, because neighboring elements never get closer than 1:
 $$(1, 0, 1, 0, 1, 0, \dots)$$
 
-The idea is that the limit of a cauchy sequence is a real number and every real number is the limit of a cauchy sequence.
+The idea is that the limit of a Cauchy sequence is a real number and every real number is the limit of a Cauchy sequence.
 This will be the starting point for our definition of real number.
 
 Of course there are multiple sequences that converge to the same number, for example:
@@ -107,14 +113,14 @@ both converge to 0.
 Again, we want to define an equivalence relation that treats them like the same object.
 Two sequences are considered equal, if the (element-wise) difference of them converges to 0, i.e. the elements get arbitrarily close to 0.
 
-The real numbers are then just defined as the cauchy sequences of rational numbers with the equality we just defined.
-Just how complex numbers "are" pairs of real numbers, real numbers "are" cauchy sequences of rational numbers.
+The real numbers are then just defined as the Cauchy sequences of rational numbers with the equality we just defined.
+Just how complex numbers "are" pairs of real numbers, real numbers "are" Cauchy sequences of rational numbers.
 (Technically they are defined as equivalence classes of the equality).
 
-Ok cool, we now have real numbers. Is $0.\overline{9}=1$.
+Ok cool, we now have real numbers. Is $0.\overline{9}=1$?
 Well, what do you mean by $0.\overline{9}$ and $1$, we only know sequences of rational numbers.
-What you can do is define the decimal representation to mean a cauchy sequence
-(basically create a function from decimal representation to cauchy sequences of rational numbers).
+What you can do, is define the decimal representation to refer to a Cauchy sequence
+(basically create a function that maps from decimal representations to Cauchy sequences of rational numbers).
 
 I will illustrate the natural way to do this using an example.
 
@@ -122,9 +128,9 @@ $$0.\overline{234} \coloneqq (\tfrac{2}{10}, \tfrac{23}{100}, \tfrac{234}{1000},
 
 Basically the n-th element in the sequence is the decimal number if you only keep the first n digits after the dot.
 These elements are of course always rational.
-This should also make clear why cauchy sequences of rationals correspond to the real numbers we intuitively know.
+This should also make clear why Cauchy sequences of rationals correspond to the real numbers we intuitively know.
 
-Let us answer $0.\overline{9}=1$.
+Let us answer whether $0.\overline{9}$ equals $1$.
 We have
 $$1 = (1, 1, 1, 1, \dots)$$
 and
@@ -140,7 +146,7 @@ Indeed, $0.\overline{9}$ does equal $1$! By definition of the real numbers.
 
 As we have seen, $0.\overline{9}$ does equal $1$ simply because we defined the real numbers in that way.
 In our definition of the real numbers there are no infinitesimally small numbers.
-But most people don't think about real numbers as a set of cauchy sequences of rational numbers.
+But most people don't think about real numbers as a set of Cauchy sequences of rational numbers.
 For most people there are no "real numbers", there are just numbers, and those numbers are used to describe our physical reality.
 Physical reality is where our intuition comes from after all.
 Are real numbers actually real? Is a line in physical space like the real number line? Or is there some indivisible length of space.
@@ -151,7 +157,7 @@ But I hope you understand that this is a different question.
 You can ask $0.\overline{9} = 1$ in the mathematical definition of the real numbers where the answer is that they are equal.
 And you can ask about the set of numbers that our physical reality is "built upon" and whether $0.\overline{9} = 1$ even makes
 sense in that context or whether it is true.
-We will probably never know the answer.
+We might never know the answer.
 
 # The hyperreal numbers
 Let us explore a set of numbers where you could reasonably say that $0.\overline{9} \neq 1$.
@@ -187,17 +193,17 @@ The construction is similar to that from rationals to reals, but a lot more comp
 (It did take until the 1960s after all!)
 
 A hyperreal number is a sequence of real numbers.
-Note that the sequence need not be cauchy.
+Note that the sequence need not be Cauchy.
 Addition and multiplication are defined component wise.
-I will use angle brackets to contrast the cauchy sequences of rational numbers in the construction of the reals.
+I will use angle brackets to contrast the Cauchy sequences of rational numbers in the construction of the reals.
 
 As I said, the real numbers are a "subset" of the hyperreals, because each real $r$ can be viewed as the constant sequence:
 $$\langle r, r, r, r, \dots \rangle$$
 
-Let us look at a infinitesimal:
+Let us look at an infinitesimal:
 $$\langle \tfrac12, \tfrac14, \tfrac18, \tfrac1{16}, \dots \rangle$$
 
-If this was a cauchy sequence of rational numbers, it would correspond to the real number 0, but in this case it does not.
+If this was a Cauchy sequence of rational numbers, it would correspond to the real number 0, but in this case it does not.
 It is a positive infinitesimal, so it is bigger than 0 but less than any positive real number.
 
 An example of an infinite number would be the reciprocal of the above number:
@@ -208,8 +214,8 @@ $$\langle 1, -1, 1, -1, \dots \rangle$$
 can correspond to either 1 or -1 depending on the details of the construction.
 This also makes comparing two hyperreals difficult, but we are going to ignore these details here and instead use intuitive examples.
 
-Let us get to the nitty gritty, is $0.\overline{9} = 1$ in the hyperreals.
-Usually the top comment when this question is asked is something like: "Yes, the question doesn't have anything to do with the hyperreals".
+Let us get to the nitty gritty, is $0.\overline{9} = 1$ in the hyperreals?
+Usually, the top comment when this question is asked is something like: "Yes, the question doesn't have anything to do with the hyperreals".
 Why do people say that? We've seen that the reals are a supset of the hyperreals and $0.\overline{9}$ is real and equal to 1,
 so it is also equal to 1 in the hyperreals.
 This is true, we defined $0.\overline{9}$ to be a real number, but it is also missing the point.
@@ -253,7 +259,7 @@ It would be a shame if we couldn't write $\frac13$ as a decimal number.
 To illustrate another important point consider the following "proof":
 Let $x = 0.\overline{9}$. Multiplying by 10 we get $10x = 9.\overline{9}$.
 Subtracting $x = 0.\overline{9}$ we get $9x = 9$ and we have $x = 1$.
-This is in my opinion one of the most convincing elementary proofs of $0.\overline{9}=1$.
+This is in my opinion one of the most convincing elementary "proofs" of $0.\overline{9}=1$.
 But we know that using our new definition $0.\overline{9}_H$ this is wrong, so what step of the proof does not work in this case?
 Think about it for a minute.
 
