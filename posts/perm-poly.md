@@ -264,7 +264,7 @@ In the language of homomorphisms, we are searching for $\ker\varphi$ which is an
 Remember that $\varphi$ is the homomorphism mapping polynomial expressions to functions.
 We will call this ideal the zero ideal$$\ZI\coloneqq \ker\varphi$$
 Note that this deviates from the usual meaning of "zero ideal", which is the boring ideal $\{0\}$.
-By the the [(first) isomorphism theorem](https://en.wikipedia.org/wiki/Isomorphism_theorems),
+By the [(first) isomorphism theorem](https://en.wikipedia.org/wiki/Isomorphism_theorems),
 $\PF\cong\P/\ZI$, which means we can uniquely represent a polynomial function by representatives
 that we will later call "reduced polynomials".
 Of course, $\ZI$ is infinite (every non-zero ideal in $\P$ is),
@@ -387,7 +387,8 @@ The number of permutations that can be represented by polynomials is$$\frac{|\PF
 </div>
 
 The first part follows from the theorem on reduced binary polynomials.
-By the *Characterization of Binary Permutation Polynomials* $a_i$ has to be odd, which excludes half of the functions.
+By the *Characterization of Binary Permutation Polynomials*,
+$a_i$ has to be odd, which excludes half of the functions.
 The sums $a_2+a_4+\dots$ and $a_3+a_5+\dots$ have to be even which exclude half again respectively,
 so overall an eighth of the polynomial functions are permutations.
 <div class="qed-line"></div>
@@ -581,7 +582,7 @@ We could have seen this a different way: If we could do standard Lagrange interp
 we could find a polynomial representation for any function $\Z_n\rightarrow \Z_n$,
 which is not possible, as not every function is representable by a polynomial.
 
-There is however another formulation of the problem as a system of linear equations,
+There is, however, another formulation of the problem as a system of linear equations,
 which can be generalized from fields to the ring $\Z_n$ and lets us apply the
 results from [Part 2](/posts/linear-systems-mod-n).
 

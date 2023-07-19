@@ -231,7 +231,7 @@ This can't happen over the real numbers or other fields.
 Let's first think about what operations on the rows are allowed without changing the space of solutions.
 Row operations correspond to left-multiplication of [elementary matrices](https://en.wikipedia.org/wiki/Elementary_matrix).
 What makes these operations not change the set of solutions is that they are **invertible**.
-Suppose we have an $\x$ that solved the system after an elementary row operation, i. e. such that $\U\A\x=\U\b$ where $\U$ is an elementary matrix (or any invertible matrix actually).
+Suppose we have an $\x$ that solved the system after an elementary row operation, i.e. such that $\U\A\x=\U\b$ where $\U$ is an elementary matrix (or any invertible matrix actually).
 Then we also have $\A\x=\U^{-1}\U\A\x=\U^{-1}\U\b=\b$, meaning $\x$ is also a solution to the original system.
 
 At this point we have to verify which of the elementary matrices are invertible over $\Z_n$.
