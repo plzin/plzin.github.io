@@ -5,7 +5,7 @@ macros:
     - Z: \mathbb{Z}
     - P: \Z_n[X]
     - PF: \mathrm{PF}_n
-    - ZI: \mathbb{0}
+    - ZI: \frak{nil}
     - V: \mathbf{V}
     - y: \mathbf{y}
     - x: \mathbf{x}
@@ -674,11 +674,11 @@ We've seen the most important theory on binary polynomials:
 <a id="alt-proof-characterization"></a>
 
 # Appendix: Characterization of Binary Permutation Polynomials using Hensel's Lemma
-A general form of Hensel's Lemma is a statement about lifting factorizations of polynomials mod $p$
-to factorizations mod $p^m$.
+Usually Hensel's Lemma is presented as a statement about lifting factorizations
+of polynomials mod $p$ to factorizations mod $p^m$.
 We will only need the special case of lifting roots:
 <div class="theorem">
-<div>Hensel Lifting of Simple Roots</div>
+<div>Theorem: Hensel Lifting of Simple Roots</div>
 Let $F\in\Z[X]$, $p$ be a prime number and $m\geq 1$ an integer.
 If $r\in\Z$ is a simple root of $f$ mod $p$, i.e.
 $$f(r)=0\bmod{p}\quad \text{and}\quad f'(r)\neq 0\bmod{p}$$
@@ -687,16 +687,53 @@ $$f(s)=0\bmod{p^m}\quad \text{and}\quad r=s\bmod{p}$$
 </div>
 
 Now, let $F\in\Z[X]$ be a polynomial.
-$F$ is permutation polynomial mod $n$ if and only if $(F-c)$ has a simple root for every $c\in\Z_n$.
+We need to rephrase the property of being a permutation polynomial in terms of roots:
+$F$ is a permutation polynomial mod $n$ if and only if $(F-c)$ has a single root for every $c\in\Z_n$.
 Or in other words, if there is a unique $r\in\Z_n$ such that $f(r)=c$ for every $c\in\Z_n$.
 Using the Hensel's Lemma we can now find a condition on the polynomial mod $p$ that implies the above.
 
 <div class="theorem">
-<span>Theorem</span>Let $F\in\Z[X]$, $p$ be a prime, $m>1$.
+<div>Theorem: Classification of Permutation Polynomials modulo Prime Powers</div>Let $F\in\Z[X]$, $p$ be a prime, $m>1$.
 $F$ is a permutation polynomial mod $p^m$ if and only if
-$f$ is permutation mod $p$ and
+$f$ is a permutation mod $p$ and
 $f'(r)\neq0\bmod{p}$ for all $r\in\Z_p$.
 </div>
+
+The $\Leftarrow$ direction is relatively easy.
+Since $F$ is permutation polynomial mod $p$, we know that $F - c$
+has a single root mod $p$ for $c\in \Z_{p^m}$.
+Because $(F - c)' = F'$ and $f'(r)\neq 0$ mod $p$,
+we can Hensel lift this root to exactly one mod $p^m$.
+So $F - c$ also has a single root mod $p^m$,
+which makes it a permutation of $\Z_{p^m}$.
+
+We will prove the $\Rightarrow$ direction by contradiction.
+Suppose $F$ is not a permutation polynomial mod $p$,
+meaning there exists a $c\in\Z_p$ such that no $x\in\Z_p$ is
+mapped to $c$ via $f$.
+But since $f(x+np) = f(x)\bmod p$, no element is ever mapped
+into the equivalence class of $c$ ($\{c, c+p, \dots\}$) mod $p^m$,
+so the function is not bijection.
+
+Now suppose that $f$ is a permutation mod $p$, but that $f'(c)=0$ mod $p$,
+for some $c\in\Z_p$.
+We need to discuss what happens to repeated roots.
+
+<div class="theorem">
+<div>Theorem: Hensel Lifting of Repeated Roots</div>
+Let $F\in\Z[X]$, $p$ be a prime number and $m\geq 1$ an integer.
+If $r\in\Z$ is a repeated root of $f$ mod $p$, i.e.
+$$f(r)=0\bmod{p}\quad \text{and}\quad f'(r) = 0\bmod{p}$$
+then there are either no, or at least $p$, $s\in\Z_{p^m}$, such that
+$$f(s)=0\bmod{p^m}\quad \text{and}\quad r=s\bmod{p}$$
+</div>
+See [Wikipedia's](https://en.wikipedia.org/wiki/Hensel's_lemma#Hensel_lifting) explanation
+for a proof.
+If there are no roots, then no value $Z_{p^m}$ maps to $c$,
+otherwise there at least $p$ values that map to $c$.
+In either case, it is not a permutation.
+
+<div class="qed-line"></div>
 
 Notice that if a polynomial is a permutation polynomial mod $p^c$ with $c>1$,
 then it is a permutation polynomial mod $p^m$ for all $m\in\mathbb{N}$.
