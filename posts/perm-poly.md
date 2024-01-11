@@ -256,7 +256,7 @@ We know $f(a)=0$, but on the other hand $f(a)=(a-a)Q+R=R$, so $R=0$ and we have 
 
 This is, of course, what you would expect, but it is good to be aware that polynomial division can't always be done in commutative rings.
 
-# Functional Equivalence in $\P$ 
+# Functional Equivalence in $\P$
 We will now deal with the problem of deciding when two polynomials represent the same function,
 as we will need it for the computation of the inverse.
 Equivalently, our problem is to find all polynomials $F$ that evaluate to 0, i.e. $f(x) = 0$ for all $x$.
@@ -331,7 +331,7 @@ By the identity
 $$\text{lcm}(a, b)\cdot\gcd(a, b)=a\cdot b$$
 for natural numbers $a$, $b$, we can find the factor
 $$\frac{n}{\gcd(n, i!)}$$
-that you can see in the definition of $P_i$. 
+that you can see in the definition of $P_i$.
 
 What I haven't seen mentioned anywhere, is that the resulting generating set is not minimal.
 This is only really useful in that it allows you to save some memory.
@@ -511,7 +511,7 @@ def invert(f, w):
         # f^(2^i-1) is the inverse.
         if g.is_identity():
             return inverse
-        
+
         # Compose f^(2^i-1) and f^(2^i)
         # to get f^(2^(i+1)-1) for the
         # next iteration.
@@ -727,6 +727,7 @@ $$f(r)=0\bmod{p}\quad \text{and}\quad f'(r) = 0\bmod{p}$$
 then there are either no, or at least $p$, $s\in\Z_{p^m}$, such that
 $$f(s)=0\bmod{p^m}\quad \text{and}\quad r=s\bmod{p}$$
 </div>
+
 See [Wikipedia's](https://en.wikipedia.org/wiki/Hensel's_lemma#Hensel_lifting) explanation
 for a proof.
 If there are no roots, then no value $Z_{p^m}$ maps to $c$,
