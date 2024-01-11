@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-    
+
   pull_request:
 
 jobs:
@@ -23,8 +23,8 @@ jobs:
       - name: Build
         run: |
           npm i --production
-          npm run export
-      
+          npm run build
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
