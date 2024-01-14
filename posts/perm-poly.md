@@ -593,7 +593,7 @@ but in our case, we know that for any polynomial there is a reduced polynomial w
 so we can always choose $\deg P = d-1$.
 
 Note that even when $m=n$, i.e. the output for every input in $\Z_n$ is specified,
-we will not get a unique solution (if one exists), since we could add any polynomial in the "zero ideal" $\ker\varphi$.
+we will not get a unique solution (if one exists), since we could add any polynomial in $\ZI$.
 On the other extreme, even if only two points on the polynomial are specified,
 there need not exist a polynomial of any degree that passes through these points:
 Let $n=2^4=16, x_1=0, y_1=0, x_2=8, y_2=1$.
@@ -666,7 +666,7 @@ and come to the conclusion that the algorithm has quadratic complexity in $w$.
 
 # Conclusion
 We've seen the most important theory on binary polynomials:
-- We have a characterization of binary permutation polynomials, which also allows us to generate random permutation polynomials
+- We have a characterization of binary permutation polynomials, which also allows us to generate random permutation polynomials.
 - We can decide when two binary polynomials compute the same function.
 - Given a binary permutation polynomial, we can efficiently find an inverse.
 

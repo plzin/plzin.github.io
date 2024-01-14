@@ -40,7 +40,7 @@ This helps to avoid some confusion, e.g. $\beta(-1)\neq -\beta(1)$ (for $w>1$).
 Let $\Z_2^w=\Z_2\times\dots\times\Z_2$ be the ring of $\Z_2$-sequences of length $w$,
 i.e. vectors/lists of $w$ bits.
 Note that although $\Z_{2^w}$ and $\Z_2^w$ have the same number of elements, they are not isomorphic (for $w>1$),
-since their additive (and multiplicative) groups are not isomorphic.
+since their additive groups (and multiplicative monoids) are not isomorphic.
 Addition in $\Z_{2^w}$ is just integer addition mod $2^w$,
 whereas in $\Z_2^w$ addition is the XOR operation.
 (Multiplication in $\Z_2^w$ is the logical AND).
@@ -638,7 +638,7 @@ but we made the mistake when reading off the solution.)
 </table>
 </code>
 
-Should we want to obfuscate any constant $c$ we just multiply $\mathbb{1}_* = -1$ by $-c$,
+Should we want to obfuscate any constant $c$, we just multiply $\mathbb{1}_* = -1$ by $-c$,
 e.g. for $c=42$
 
 <code>
