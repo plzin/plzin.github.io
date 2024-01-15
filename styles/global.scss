@@ -58,15 +58,17 @@ body {
 }
 
 a {
-    color: var(--link);
-    text-decoration: none;
+    color: var(--foreground);
+    text-decoration: dashed underline;
+    text-decoration-color: var(--link);
 
     &:visited {
-        color: var(--link-clicked);
+        color: var(--foreground);
     }
 
     &:hover {
         text-decoration: underline;
+        text-decoration-color: var(--link);
     }
 }
 
@@ -182,7 +184,7 @@ div.qed-line {
     font-size: 1.1em !important;
 }
 
-.katex-display{
+.katex-display {
     overflow: auto hidden !important;
 }
 
