@@ -29,6 +29,7 @@ async function generateFeed() {
         })
     })
 
+    fs.mkdirSync('./public/feed/')
     fs.writeFileSync('./public/feed/rss.xml', feed.rss2())
     fs.writeFileSync('./public/feed/atom.xml', feed.atom1())
 }

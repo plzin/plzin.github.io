@@ -1,4 +1,4 @@
-/public/feed/*
+/public/feed/
 
 # dependencies
 /node_modules
