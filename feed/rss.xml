@@ -4,7 +4,7 @@
         <title>Justus Polzin's Blog</title>
         <link>https://plzin.github.io/</link>
         <description>Blog about computers, numbers, and sometimes other things</description>
-        <lastBuildDate>Sat, 20 Jan 2024 15:44:10 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 20 Jan 2024 16:55:48 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -17,42 +17,42 @@
             <link>https://plzin.github.io/posts/mba-deobf</link>
             <guid>https://plzin.github.io/posts/mba-deobf</guid>
             <pubDate>Mon, 24 Apr 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[How to deobfuscate (linear) MBA]]></description>
+            <description><![CDATA[We discuss the deobfuscation of linear MBA and how that corresponds to finding small vectors in the solution lattice of a linear system. We discuss methods of finding such a vector.]]></description>
         </item>
         <item>
             <title><![CDATA[Mixed Boolean-Arithmetic (Part 3): Binary Permutation Polynomials]]></title>
             <link>https://plzin.github.io/posts/perm-poly</link>
             <guid>https://plzin.github.io/posts/perm-poly</guid>
             <pubDate>Mon, 24 Apr 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[Properties of Polynomials mod n and in particular when n is a power of two]]></description>
+            <description><![CDATA[I discuss some general properties of polynomials mod n and in particular when n is a power of two. I try to explain intuitively when two such polynomials compute the same function. We then follow Rivest's proof of the characterization of binary permutation polynomials. Finally, we try to find a polynomial that corresponds to the inverse permutation of a binary permutation polynomial.]]></description>
         </item>
         <item>
             <title><![CDATA[Mixed Boolean-Arithmetic (Part 2): Systems of Linear Equations mod n]]></title>
             <link>https://plzin.github.io/posts/linear-systems-mod-n</link>
             <guid>https://plzin.github.io/posts/linear-systems-mod-n</guid>
             <pubDate>Mon, 24 Apr 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[Solving Systems of Linear Equations mod n via the "Hermite Normal Form" and "Diagonalization"]]></description>
+            <description><![CDATA[We discuss systems of linear equations mod n. We see how solving a puzzle in a video game can be reduced to such a linear system. We then try to actually solve such systems by reducing them to systems of diophantine equations and solving those with the "Hermite Normal Form" or more directly by "Diagonalization".]]></description>
         </item>
         <item>
             <title><![CDATA[Mixed Boolean-Arithmetic (Part 1.5): The Fundamental Theorem of Mixed Boolean-Arithmetic]]></title>
             <link>https://plzin.github.io/posts/mba-theorem</link>
             <guid>https://plzin.github.io/posts/mba-theorem</guid>
             <pubDate>Mon, 24 Apr 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[Understanding MBA formally, proving the "Fundamental Theorem of Mixed Boolean-Arithmetic", and clarifying some related confusing things]]></description>
+            <description><![CDATA[We formalize all the parts of linear MBA, which allows us to prove the "Fundamental Theorem of Mixed Boolean-Arithmetic" from Part 1. Afterwards, I clarify some confusing things about linear MBA.]]></description>
         </item>
         <item>
             <title><![CDATA[Mixed Boolean-Arithmetic (Part 1): Introduction]]></title>
             <link>https://plzin.github.io/posts/mba</link>
             <guid>https://plzin.github.io/posts/mba</guid>
             <pubDate>Mon, 24 Apr 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[Introduction to Mixed Boolean-Arithmetic]]></description>
+            <description><![CDATA[An Introduction to Mixed Boolean-Arithmetic (MBA) Obfuscation. I explain the idea behind the automatic generation linear MBA and permutation polynomials. We use linear MBA to obfuscate a constant and finally turn that into a non-linear MBA expression.]]></description>
         </item>
         <item>
             <title><![CDATA[0.999... = 1]]></title>
             <link>https://plzin.github.io/posts/non-standard-analysis</link>
             <guid>https://plzin.github.io/posts/non-standard-analysis</guid>
             <pubDate>Tue, 05 Apr 2022 00:00:00 GMT</pubDate>
-            <description><![CDATA[Introduction to non-standard analysis in the context of understanding 0.999... = 1]]></description>
+            <description><![CDATA[I discuss some things that I believe cause a lot of confusion around 0.999... = 1. I explain why I find one of the often given high school "proofs" unsatisfactory and we try to formalize the real numbers. Noticing the difficulty, I explain the Cauchy sequence construction. After defining decimal notation, we can now actually prove 0.999... = 1. I discuss whether the Cauchy sequence definition is "correct". Finally, I explain the hyperreal numbers and we try to make sense of 0.999... = 1 there.]]></description>
         </item>
     </channel>
 </rss>
