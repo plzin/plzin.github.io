@@ -11,9 +11,6 @@ export const siteTitle = 'Justus Polzin\'s Blog'
 export default function Layout({ children, home }) {
     return (
         <div className={styles.container}>
-            <Head>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
             <header className={styles.header}>
                 {home ? (
                     <>

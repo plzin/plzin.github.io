@@ -1,14 +1,15 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
+    "feed": "node scripts/feed.js",
     "dev": "next dev",
-    "build": "next build",
-    "prestart": "npm run build",
-    "start": "serve out"
+    "build": "npm run feed && next build"
   },
   "dependencies": {
-    "@mapbox/rehype-prism": "^0.8.0",
+    "@mapbox/rehype-prism": "^0.9.0",
     "date-fns": "^2.28.0",
+    "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "katex": "^0.16.7",
     "next": "latest",
@@ -27,6 +28,6 @@
     "unified": "^10.1.2"
   },
   "devDependencies": {
-    "serve": "^13.0.2"
+    "serve": "^14.2.1"
   }
 }

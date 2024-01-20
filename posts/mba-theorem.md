@@ -101,7 +101,7 @@ More importantly, we are now ready to formally define linear MBA functions.
 <div>Definition: Linear Mixed Boolean-Arithmetic Function</div>
 A function $g: \Z_{2^w}^n\to\Z_{2^w}$ is called a linear mixed boolean-arithmetic function,
 if it can written in the form
-$$f(x_1,\dots,x_n)=\sum_{i=1}^m c_if_{i*}(x_1,\dots,x_n)$$
+$$g(x_1,\dots,x_n)=\sum_{i=1}^m c_if_{i*}(x_1,\dots,x_n)$$
 for some constants $c_i\in\Z_{2^w}$ and some functions $f_i: \Z_2^n\to\Z_2$ and $m\in\mathbb{N}$.
 In other words, it is a linear combination of bitwise functions.
 </div>

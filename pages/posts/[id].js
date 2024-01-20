@@ -9,7 +9,6 @@ export default function Post({ postData }) {
         <Layout>
             <Head>
                 <title>{postData.plain_title ?? postData.title}</title>
-                <style dangerouslySetInnerHTML={{ __html: postData.style }}></style>
             </Head>
             <article>
                 <h1 className={utilStyles.headingXl} dangerouslySetInnerHTML={{ __html: postData.title }} />

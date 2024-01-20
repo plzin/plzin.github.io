@@ -3,14 +3,13 @@ import Link from 'next/link'
 import Layout, { siteTitle } from '../components/layout'
 import Date from '../components/date'
 import utilStyles from '../styles/utils.module.scss'
-import { getSortedPostsData } from '../lib/posts'
+import { getSortedHeaderData } from '../lib/posts'
 
-export default function Home({ postsData, style }) {
+export default function Home({ postsData }) {
     return (
         <Layout home>
             <Head>
                 <title>{siteTitle}</title>
-                <style dangerouslySetInnerHTML={{ __html: style }}></style>
             </Head>
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                 <h2 className={utilStyles.headingLg}>Posts</h2>
@@ -31,11 +30,10 @@ export default function Home({ postsData, style }) {
 }
 
 export async function getStaticProps() {
-    const data = await getSortedPostsData()
+    const data = await getSortedHeaderData()
     return {
         props: {
             postsData: data.postsData,
-            style: data.style,
         }
     }
 }
