@@ -9,7 +9,13 @@ macros:
     - V: \mathbf{V}
     - y: \mathbf{y}
     - x: \mathbf{x}
-summary: 'Properties of Polynomials mod n and in particular when n is a power of two'
+summary: >-
+    I discuss some general properties of polynomials mod n and in particular
+    when n is a power of two. I try to explain intuitively when two such
+    polynomials compute the same function. We then follow Rivest's proof
+    of the characterization of binary permutation polynomials.
+    Finally, we try to find a polynomial that corresponds to the inverse
+    permutation of a binary permutation polynomial.
 ---
 
 In this post we are going to find polynomials $p, q\in \P$,
@@ -761,9 +767,9 @@ The characterization of Rivest now follows easily:
 A polynomials $P=a_0+\dots+a_dX^d\in\Z[X]$ is a permutation mod $2^w$ ($w>1$)
 if and only if
 <ul style="margin-top: 0.2em;margin-bottom: 0">
-  <li>$a_1$ is odd
-  <li>$a_2+a_4+a_6+\dots$ is even
-  <li>$a_3+a_5+a_7+\dots$ is even
+    <li>$a_1$ is odd
+    <li>$a_2+a_4+a_6+\dots$ is even
+    <li>$a_3+a_5+a_7+\dots$ is even
 </ul>
 </div>
 

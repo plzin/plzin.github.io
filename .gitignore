@@ -1,4 +1,5 @@
 /public/feed/
+/.vscode
 
 # dependencies
 /node_modules

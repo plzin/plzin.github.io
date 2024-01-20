@@ -2,7 +2,15 @@
 title: '$0.\overline{9} \stackrel?= 1$'
 plain_title: '0.999... = 1'
 date: '2022-04-05'
-summary: 'Introduction to non-standard analysis in the context of understanding 0.999... = 1'
+summary: >-
+    I discuss some things that I believe cause a lot of confusion around
+    0.999... = 1. I explain why I find one of the often given high school
+    "proofs" unsatisfactory and we try to formalize the real numbers.
+    Noticing the difficulty, I explain the Cauchy sequence construction.
+    After defining decimal notation, we can now actually prove 0.999... = 1.
+    I discuss whether the Cauchy sequence definition is "correct".
+    Finally, I explain the hyperreal numbers and we try to make sense of
+    0.999... = 1 there.
 ---
 
 Do you think $0.999\ldots = 1$? How sure are you? Could you prove it? How would you explain it to someone just learning about real numbers?
@@ -49,7 +57,7 @@ $$\mathbb{R} \coloneqq \{\ s\ a_n\dots a_1.b_1b_2b_3\dots\ |\ s\in\{+, -\}, a_i,
 This is just the set of all (infinite strings of) decimal numbers
 and I think most high-schoolers would agree that this is the right definition.
 But it is not.
-If we defined it like this we would have defined $0.\overline{9}$ to be different from $1$.
+If we defined it like this, we would have defined $0.\overline{9}$ to be different from $1$.
 They are different elements in our set (they are different strings).
 (We also defined 0 to be different from -0, but let us ignore that for now).
 
@@ -82,7 +90,7 @@ But this is not a very satisfying answer either, because we just defined $1$ to 
 The answer to the "question" would be: By definition of equality on our set.
 
 # How do mathematicians define the real numbers?
-There are multiple provably equivalent ways to do this.
+There are multiple provably equivalent ways of doing this.
 We will choose the one that is most practical for us: [Cauchy sequences of rational numbers](https://en.wikipedia.org/wiki/Construction_of_the_real_numbers#Construction_from_Cauchy_sequences).
 Just to make sure: A rational number is something that can be expressed as a ratio of two whole numbers like $\frac{13}{37}$.
 
@@ -97,7 +105,7 @@ What is a [Cauchy sequence](https://brilliant.org/wiki/cauchy-sequences/)?
 It is just a sequence (i.e. an infinite list) of rational numbers, such that the elements of the sequence get arbitrarily close to each other (I won't make that more precise here).
 
 This is a Cauchy sequence that converges to 0:
-$$(1, \tfrac{1}{2}, \tfrac{1}{4}, \tfrac{1}{8}, \dots )$$
+$$(1, \tfrac{1}{2}, \tfrac{1}{4}, \tfrac{1}{8}, \dots)$$
 
 The following is not a Cauchy sequence, because neighboring elements never get closer than 1:
 $$(1, 0, 1, 0, 1, 0, \dots)$$

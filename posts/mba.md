@@ -2,8 +2,12 @@
 title: 'Mixed Boolean-Arithmetic (Part 1): Introduction'
 date: '2023-04-24'
 macros:
-  - Z: \mathbb{Z}
-summary: 'Introduction to Mixed Boolean-Arithmetic'
+    - Z: \mathbb{Z}
+summary: >-
+    An Introduction to Mixed Boolean-Arithmetic (MBA) Obfuscation.
+    I explain the idea behind the automatic generation linear MBA
+    and permutation polynomials. We use linear MBA to obfuscate a
+    constant and finally turn that into a non-linear MBA expression.
 ---
 
 What does the following function do?
@@ -133,77 +137,77 @@ We will assume `x` and `y` are 2-bit numbers.
 
 <code>
 <table style="width: 50%">
-  <colgroup>
-    <col style="width: 3em">
-    <col style="border-right: 2px solid var(--border-2); width: 3em">
-  </colgroup>
-  <thead style>
-    <tr>
-      <th>x</th>
-      <th>y</th>
-      <th>x ^ y</th>
-      <th>x & y</th>
-      <th>x + y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>2</td>
-      <td>2</td>
-      <td>0</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>3</td>
-      <td>3</td>
-      <td>0</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>3</td>
-      <td>0</td>
-      <td>3</td>
-      <td>2</td>
-    </tr>
-  </tbody>
+    <colgroup>
+        <col style="width: 3em">
+        <col style="border-right: 2px solid var(--border-2); width: 3em">
+    </colgroup>
+    <thead style>
+        <tr>
+            <th>x</th>
+            <th>y</th>
+            <th>x ^ y</th>
+            <th>x & y</th>
+            <th>x + y</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>2</td>
+            <td>2</td>
+            <td>0</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>3</td>
+            <td>3</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3</td>
+            <td>0</td>
+            <td>3</td>
+            <td>2</td>
+        </tr>
+    </tbody>
 </table>
 </code>
 
@@ -262,49 +266,49 @@ In the example above, we would only have the following table with 4 rows instead
 
 <code>
 <table style="width: 50%">
-  <colgroup>
-    <col style="width: 3em">
-    <col style="border-right: 2px solid var(--border-2); width: 3em">
-  </colgroup>
-  <thead>
-    <tr>
-      <th>x</th>
-      <th>y</th>
-      <th>x ^ y</th>
-      <th>x & y</th>
-      <th>x + y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-  </tbody>
+    <colgroup>
+        <col style="width: 3em">
+        <col style="border-right: 2px solid var(--border-2); width: 3em">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>x</th>
+            <th>y</th>
+            <th>x ^ y</th>
+            <th>x & y</th>
+            <th>x + y</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+    </tbody>
 </table>
 </code>
 

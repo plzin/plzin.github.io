@@ -2,17 +2,22 @@
 title: 'Mixed Boolean-Arithmetic (Part 2): Systems of Linear Equations mod n'
 date: '2023-04-24'
 macros:
-  - x: \mathbf{x}
-  - b: \mathbf{b}
-  - A: \mathbf{A}
-  - D: \mathbf{D}
-  - G: \mathbf{G}
-  - H: \mathbf{H}
-  - S: \mathbf{S}
-  - T: \mathbf{T}
-  - U: \mathbf{U}
-  - Z: \mathbb{Z}
-summary: 'Solving Systems of Linear Equations mod n via the "Hermite Normal Form" and "Diagonalization"'
+    - x: \mathbf{x}
+    - b: \mathbf{b}
+    - A: \mathbf{A}
+    - D: \mathbf{D}
+    - G: \mathbf{G}
+    - H: \mathbf{H}
+    - S: \mathbf{S}
+    - T: \mathbf{T}
+    - U: \mathbf{U}
+    - Z: \mathbb{Z}
+summary: >-
+    We discuss systems of linear equations mod n.
+    We see how solving a puzzle in a video game can be reduced to such a
+    linear system. We then try to actually solve such systems by reducing
+    them to systems of diophantine equations and solving those with the
+    "Hermite Normal Form" or more directly by "Diagonalization".
 ---
 
 In this post we are going to try and solve systems of linear congruences, i.e.
@@ -46,10 +51,10 @@ If you just want to skip the puzzle, [click here](#Solution)!
 This is a puzzle in a video game called Genshin Impact.
 
 <div>
-  <video style="margin-left: auto; margin-right: auto; margin-bottom: 1em; margin-top: 1em; display: block; width: 100%" muted controls>
-    <source src="/videos/GI1.mp4" type="video/mp4">
-    A video clip of the puzzle would appear here if your browser supported it.
-  </video>
+    <video style="margin-left: auto; margin-right: auto; margin-bottom: 1em; margin-top: 1em; display: block; width: 100%" muted controls>
+        <source src="/videos/GI1.mp4" type="video/mp4">
+        A video clip of the puzzle would appear here if your browser supported it.
+    </video>
 </div>
 
 What's going on here?
@@ -116,36 +121,36 @@ We can use matrix/vector notation to "simplify" this.
 
 $$
 \A = \begin{bmatrix}
-  1 & 1 & 0 & 0\\
-  1 & 1 & 1 & 0\\
-  0 & 1 & 1 & 1\\
-  0 & 0 & 1 & 1\\
+    1 & 1 & 0 & 0\\
+    1 & 1 & 1 & 0\\
+    0 & 1 & 1 & 1\\
+    0 & 0 & 1 & 1\\
 \end{bmatrix}
 \ \ %
 \x = \begin{bmatrix}
-  x_1\\
-  x_2\\
-  x_3\\
-  x_4\\
+    x_1\\
+    x_2\\
+    x_3\\
+    x_4\\
 \end{bmatrix}
 \ \ %
 \b = \begin{bmatrix}
-  -s_1\\
-  -s_2\\
-  -s_3\\
-  -s_4\\
+    -s_1\\
+    -s_2\\
+    -s_3\\
+    -s_4\\
 \end{bmatrix}
 = \begin{bmatrix}
-  -0\\
-  -1\\
-  -1\\
-  -0\\
+    -0\\
+    -1\\
+    -1\\
+    -0\\
 \end{bmatrix}
 = \begin{bmatrix}
-  0\\
-  2\\
-  2\\
-  0\\
+    0\\
+    2\\
+    2\\
+    0\\
 \end{bmatrix}
 $$
 
@@ -156,31 +161,31 @@ Let's actually try to solve this specific instance of the problem by finding the
 
 $$
 \left[\begin{array}{rrrr|r}
-  1 & 1 & 0 & 0 & 0\\
-  1 & 1 & 1 & 0 & 2\\
-  0 & 1 & 1 & 1 & 2\\
-  0 & 0 & 1 & 1 & 0\\
+    1 & 1 & 0 & 0 & 0\\
+    1 & 1 & 1 & 0 & 2\\
+    0 & 1 & 1 & 1 & 2\\
+    0 & 0 & 1 & 1 & 0\\
 \end{array}\right]
 \stackrel{\text{II=I-II}}\rightarrow
 \left[\begin{array}{rrrr|r}
-  1 & 1 & 0 & 0 & 0\\
-  0 & 0 & 2 & 0 & 1\\
-  0 & 1 & 1 & 1 & 2\\
-  0 & 0 & 1 & 1 & 0\\
+    1 & 1 & 0 & 0 & 0\\
+    0 & 0 & 2 & 0 & 1\\
+    0 & 1 & 1 & 1 & 2\\
+    0 & 0 & 1 & 1 & 0\\
 \end{array}\right]
 \stackrel{\text{II}\leftrightarrow \text{III}}\rightarrow
 \left[\begin{array}{rrrr|r}
-  1 & 1 & 0 & 0 & 0\\
-  0 & 1 & 1 & 1 & 2\\
-  0 & 0 & 2 & 0 & 1\\
-  0 & 0 & 1 & 1 & 0\\
+    1 & 1 & 0 & 0 & 0\\
+    0 & 1 & 1 & 1 & 2\\
+    0 & 0 & 2 & 0 & 1\\
+    0 & 0 & 1 & 1 & 0\\
 \end{array}\right]
 \stackrel{\text{IV=IV+III}}\rightarrow
 \left[\begin{array}{rrrr|r}
-  1 & 1 & 0 & 0 & 0\\
-  0 & 1 & 1 & 1 & 2\\
-  0 & 0 & 2 & 0 & 1\\
-  0 & 0 & 0 & 1 & 1\\
+    1 & 1 & 0 & 0 & 0\\
+    0 & 1 & 1 & 1 & 2\\
+    0 & 0 & 2 & 0 & 1\\
+    0 & 0 & 0 & 1 & 1\\
 \end{array}\right]
 $$
 
@@ -193,10 +198,10 @@ So overall
 
 $$
 \x = \begin{bmatrix}
-  1\\
-  2\\
-  2\\
-  1\\
+    1\\
+    2\\
+    2\\
+    1\\
 \end{bmatrix}
 $$
 
@@ -260,8 +265,8 @@ Suppose $n=6$ and consider this system of linear congruences, which will serve u
 
 $$
 \left[\begin{array}{rr|r}
-  3 & 5 & 0\\
-  4 & 2 & 2\\
+    3 & 5 & 0\\
+    4 & 2 & 2\\
 \end{array}\right]
 $$
 
@@ -283,13 +288,13 @@ In this simple case the pivot is the three and we reduce the second row with the
 
 $$
 \left[\begin{array}{rr|r}
-  3 & 5 & 0\\
-  4 & 2 & 2\\
+    3 & 5 & 0\\
+    4 & 2 & 2\\
 \end{array}\right]
 \stackrel{\text{II=II-I}}\rightarrow
 \left[\begin{array}{rr|r}
-  3 & 5 & 0\\
-  1 & 3 & 2\\
+    3 & 5 & 0\\
+    1 & 3 & 2\\
 \end{array}\right]
 $$
 
@@ -298,13 +303,13 @@ Now, we select the pivot, which is 1, and swap it to the top.
 
 $$
 \left[\begin{array}{rr|r}
-  3 & 5 & 0\\
-  1 & 3 & 2\\
+    3 & 5 & 0\\
+    1 & 3 & 2\\
 \end{array}\right]
 \stackrel{\text{I}\leftrightarrow \text{II}}\rightarrow
 \left[\begin{array}{rr|r}
-  1 & 3 & 2\\
-  3 & 5 & 0\\
+    1 & 3 & 2\\
+    3 & 5 & 0\\
 \end{array}\right]
 $$
 
@@ -312,13 +317,13 @@ We can reduce the second row 3 times with the first one.
 
 $$
 \left[\begin{array}{rr|r}
-  1 & 3 & 2\\
-  3 & 5 & 0\\
+    1 & 3 & 2\\
+    3 & 5 & 0\\
 \end{array}\right]
 \stackrel{\text{II=II-3I}}\rightarrow
 \left[\begin{array}{rr|r}
-  1 & 5 & 2\\
-  0 & 2 & 0\\
+    1 & 5 & 2\\
+    0 & 2 & 0\\
 \end{array}\right]
 $$
 
@@ -351,9 +356,9 @@ Especially when trying to automate it, so I won't go into more detail than I hav
 Consider this example in $\Z_6$.
 $$
 \left[\begin{array}{rrr|r}
-  1 & 3 & 3 & 5\\
-  0 & 2 & 3 & 4\\
-  0 & 0 & 2 & 4\\
+    1 & 3 & 3 & 5\\
+    0 & 2 & 3 & 4\\
+    0 & 0 & 2 & 4\\
 \end{array}\right]
 $$
 
@@ -397,8 +402,8 @@ Using the example from the beginning, the matrix
 
 $$
 \left[\begin{array}{rr|r}
-  3 & 5 & 0\\
-  4 & 2 & 2\\
+    3 & 5 & 0\\
+    4 & 2 & 2\\
 \end{array}\right]
 $$
 
@@ -424,8 +429,8 @@ The matrix form for this is
 
 $$
 \left[\begin{array}{rrrr|r}
-  3 & 5 & 6 & 0 & 0\\
-  4 & 2 & 0 & 6 & 2\\
+    3 & 5 & 6 & 0 & 0\\
+    4 & 2 & 0 & 6 & 2\\
 \end{array}\right]
 $$
 
@@ -491,8 +496,8 @@ Basically we construct the matrix
 
 $$
 \G = \left[\begin{array}{rr}
-  \A^T & 0\\
-  \b^T & 1\\
+    \A^T & 0\\
+    \b^T & 1\\
 \end{array}\right]
 $$
 
@@ -511,9 +516,9 @@ Let $\H'$ be the non-zero rows of the HNF of $\A^T$, then over all $\H$ takes th
 
 $$
 \H = \left[\begin{array}{cc}
-  \H' & 0\\
-  0 & 1\\
-  0 & 0\\
+    \H' & 0\\
+    0 & 1\\
+    0 & 0\\
 \end{array}\right]
 $$
 
@@ -526,9 +531,9 @@ I think it's easiest if I just tell you the solution and we then verify that it 
 
 $$
 \U = \left[\begin{array}{rr}
-  \mathbf{Q} & 0\\
-  -\x^T & 1\\
-  \mathbf{K}^T & 0\\
+    \mathbf{Q} & 0\\
+    -\x^T & 1\\
+    \mathbf{K}^T & 0\\
 \end{array}\right]
 $$
 
@@ -570,8 +575,8 @@ Consider the following matrix (still with $n=6$):
 
 $$
 \left[\begin{array}{rr}
-  2 & 1\\
-  4 & 0\\
+    2 & 1\\
+    4 & 0\\
 \end{array}\right]
 $$
 
@@ -579,13 +584,13 @@ In the algorithm I just showed you, we would subtract the first row 2 times from
 
 $$
 \left[\begin{array}{rr}
-  2 & 1\\
-  4 & 0\\
+    2 & 1\\
+    4 & 0\\
 \end{array}\right]
 \stackrel{\text{II=II-2I}}\rightarrow
 \left[\begin{array}{rr}
-  2 & 1\\
-  0 & 4\\
+    2 & 1\\
+    0 & 4\\
 \end{array}\right]
 $$
 
@@ -593,13 +598,13 @@ This matrix fulfills the conditions for a HNF, but if we instead add the first r
 
 $$
 \left[\begin{array}{rr}
-  2 & 1\\
-  4 & 0\\
+    2 & 1\\
+    4 & 0\\
 \end{array}\right]
 \stackrel{\text{II=II+I}}\rightarrow
 \left[\begin{array}{rr}
-  2 & 1\\
-  0 & 1\\
+    2 & 1\\
+    0 & 1\\
 \end{array}\right]
 $$
 
@@ -607,13 +612,13 @@ We then simplify further by subtracting the second row from the first to reduce 
 
 $$
 \left[\begin{array}{rr}
-  2 & 1\\
-  0 & 1\\
+    2 & 1\\
+    0 & 1\\
 \end{array}\right]
 \stackrel{\text{I=I-II}}\rightarrow
 \left[\begin{array}{rr}
-  2 & 0\\
-  0 & 1\\
+    2 & 0\\
+    0 & 1\\
 \end{array}\right]
 $$
 
@@ -643,23 +648,23 @@ This is exactly the same thing we've already seen.
 
 $$
 \left[\begin{array}{rr}
-  3 & 5\\
-  4 & 2\\
+    3 & 5\\
+    4 & 2\\
 \end{array}\right]
 \stackrel{\text{II=II-I}}\rightarrow
 \left[\begin{array}{rr}
-  3 & 5\\
-  1 & 3\\
+    3 & 5\\
+    1 & 3\\
 \end{array}\right]
 \stackrel{\text{I}\leftrightarrow\text{II}}\rightarrow
 \left[\begin{array}{rr}
-  1 & 3\\
-  3 & 5\\
+    1 & 3\\
+    3 & 5\\
 \end{array}\right]
 \stackrel{\text{II=II-3I}}\rightarrow
 \left[\begin{array}{rr}
-  1 & 3\\
-  0 & 2\\
+    1 & 3\\
+    0 & 2\\
 \end{array}\right]
 $$
 
@@ -673,13 +678,13 @@ Nevertheless, in this instance we can now use a single column operations to elim
 
 $$
 \left[\begin{array}{rr}
-  1 & 3\\
-  0 & 2\\
+    1 & 3\\
+    0 & 2\\
 \end{array}\right]
 \stackrel{\text{II=II-3I}}\rightarrow
 \left[\begin{array}{rr}
-  1 & 0\\
-  0 & 2\\
+    1 & 0\\
+    0 & 2\\
 \end{array}\right]
 $$
 
@@ -690,12 +695,12 @@ The matrices $\S$ and $\T$ can be computed along the way in the same way as in t
 
 $$
 \S=\left[\begin{array}{cc}
-  5 & 1\\
-  4 & 3\\
+    5 & 1\\
+    4 & 3\\
 \end{array}\right],
 \T=\left[\begin{array}{cc}
-  1 & 3\\
-  0 & 1\\
+    1 & 3\\
+    0 & 1\\
 \end{array}\right]
 $$
 
@@ -719,26 +724,26 @@ Continuing with the example above, we have to solve
 
 $$
 \underbrace{\left[\begin{array}{cc}
-  1 & 0\\
-  0 & 2\\
+    1 & 0\\
+    0 & 2\\
 \end{array}\right]}_{\D}
 \left[\begin{array}{c}
-  x_1'\\
-  x_2'\\
+    x_1'\\
+    x_2'\\
 \end{array}\right]
 =
 \underbrace{\left[\begin{array}{cc}
-  5 & 1\\
-  4 & 3\\
+    5 & 1\\
+    4 & 3\\
 \end{array}\right]}_{\S}
 \underbrace{\left[\begin{array}{c}
-  0\\
-  2\\
+    0\\
+    2\\
 \end{array}\right]}_{\b}
 =
 \left[\begin{array}{c}
-  2\\
-  0\\
+    2\\
+    0\\
 \end{array}\right]
 $$
 
@@ -754,13 +759,13 @@ So overall
 
 $$
 \x'=\left[\begin{array}{c}
-  2\\
-  0\\
+    2\\
+    0\\
 \end{array}\right]
 +i
 \left[\begin{array}{c}
-  0\\
-  3\\
+    0\\
+    3\\
 \end{array}\right]
 $$
 
@@ -768,29 +773,29 @@ To get $\x$, we left-multiply by $\T$.
 
 $$
 \x=\underbrace{\left[\begin{array}{cc}
-  1 & 3\\
-  0 & 1\\
+    1 & 3\\
+    0 & 1\\
 \end{array}\right]}_{\T}
 \underbrace{\left(
 \left[\begin{array}{c}
-  2\\
-  0\\
+    2\\
+    0\\
 \end{array}\right]
 +i
 \left[\begin{array}{c}
-  0\\
-  3\\
+    0\\
+    3\\
 \end{array}\right]
 \right)}_{\x'}
 =
 \left[\begin{array}{c}
-  2\\
-  0\\
+    2\\
+    0\\
 \end{array}\right]
 +i
 \left[\begin{array}{c}
-  3\\
-  3\\
+    3\\
+    3\\
 \end{array}\right]
 $$
 
@@ -844,8 +849,8 @@ Let's look at the example from earlier over $\Z_6$
 
 $$
 \left[\begin{array}{rr}
-  3 & 5\\
-  4 & 2\\
+    3 & 5\\
+    4 & 2\\
 \end{array}\right]
 $$
 

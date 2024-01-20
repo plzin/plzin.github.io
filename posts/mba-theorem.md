@@ -2,8 +2,11 @@
 title: 'Mixed Boolean-Arithmetic (Part 1.5): The Fundamental Theorem of Mixed Boolean-Arithmetic'
 date: '2023-04-24'
 macros:
-  - Z: \mathbb{Z}
-summary: 'Understanding MBA formally, proving the "Fundamental Theorem of Mixed Boolean-Arithmetic", and clarifying some related confusing things'
+    - Z: \mathbb{Z}
+summary: >-
+    We formalize all the parts of linear MBA, which allows us to prove the
+    "Fundamental Theorem of Mixed Boolean-Arithmetic" from Part 1.
+    Afterwards, I clarify some confusing things about linear MBA.
 ---
 
 This part was originally an appendix to Part 1.
@@ -217,70 +220,70 @@ so I have omitted some rows, but here is what it would look like.
 
 <code>
 <table>
-  <colgroup>
-    <col style="width: 3em">
-    <col style="border-right: 2px solid var(--border-2); width: 3em">
-    <col span="4" style="width: 5em">
-    <col style="border-left: 2px solid var(--border-2); width: 6em">
-  </colgroup>
-  <thead style>
-    <tr>
-      <th>x</th>
-      <th>y</th>
-      <th>!x</th>
-      <th>!y</th>
-      <th>x & y</th>
-      <th>!(x | y)</th>
-      <th>x + y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>3</td>
-      <td>0</td>
-      <td>3</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>1</td>
-      <td>3</td>
-      <td>2</td>
-      <td>0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>2</td>
-      <td>3</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-      <td>..</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>3</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>0</td>
-      <td>2</td>
-    </tr>
-  </tbody>
+    <colgroup>
+        <col style="width: 3em">
+        <col style="border-right: 2px solid var(--border-2); width: 3em">
+        <col span="4" style="width: 5em">
+        <col style="border-left: 2px solid var(--border-2); width: 6em">
+    </colgroup>
+    <thead style>
+        <tr>
+            <th>x</th>
+            <th>y</th>
+            <th>!x</th>
+            <th>!y</th>
+            <th>x & y</th>
+            <th>!(x | y)</th>
+            <th>x + y</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+            <td>3</td>
+            <td>0</td>
+            <td>3</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>3</td>
+            <td>2</td>
+            <td>0</td>
+            <td>2</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>2</td>
+            <td>3</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3</td>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+            <td>0</td>
+            <td>2</td>
+        </tr>
+    </tbody>
 </table>
 </code>
 
@@ -299,61 +302,61 @@ Restricting the table two the inputs 0/1, we get this:
 
 <code>
 <table>
-  <colgroup>
-    <col style="width: 3em">
-    <col style="border-right: 2px solid var(--border-2); width: 3em">
-    <col span="4" style="width: 5em">
-    <col style="border-left: 2px solid var(--border-2); width: 6em">
-  </colgroup>
-  <thead style>
-    <tr>
-      <th>x</th>
-      <th>y</th>
-      <th>!x</th>
-      <th>!y</th>
-      <th>x & y</th>
-      <th>!(x | y)</th>
-      <th>x + y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>3</td>
-      <td>0</td>
-      <td>3</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>1</td>
-      <td>3</td>
-      <td>2</td>
-      <td>0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0</td>
-      <td>2</td>
-      <td>3</td>
-      <td>0</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-      <td>2</td>
-      <td>1</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-  </tbody>
+    <colgroup>
+        <col style="width: 3em">
+        <col style="border-right: 2px solid var(--border-2); width: 3em">
+        <col span="4" style="width: 5em">
+        <col style="border-left: 2px solid var(--border-2); width: 6em">
+    </colgroup>
+    <thead style>
+        <tr>
+            <th>x</th>
+            <th>y</th>
+            <th>!x</th>
+            <th>!y</th>
+            <th>x & y</th>
+            <th>!(x | y)</th>
+            <th>x + y</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+            <td>3</td>
+            <td>0</td>
+            <td>3</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>3</td>
+            <td>2</td>
+            <td>0</td>
+            <td>2</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>2</td>
+            <td>3</td>
+            <td>0</td>
+            <td>2</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>2</td>
+            <td>2</td>
+            <td>1</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+    </tbody>
 </table>
 </code>
 
@@ -368,61 +371,61 @@ To illustrate, let me write 3 = -1 in the table.
 
 <code>
 <table>
-  <colgroup>
-    <col style="width: 3em">
-    <col style="border-right: 2px solid var(--border-2); width: 3em">
-    <col span="4" style="width: 5em">
-    <col style="border-left: 2px solid var(--border-2); width: 6em">
-  </colgroup>
-  <thead style>
-    <tr>
-      <th>x</th>
-      <th>y</th>
-      <th>!x</th>
-      <th>!y</th>
-      <th>x & y</th>
-      <th>!(x | y)</th>
-      <th>x + y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>-1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>-1</td>
-    </tr>
-    <tr>
-      <td>-1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>-1</td>
-    </tr>
-    <tr>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>-2</td>
-    </tr>
-  </tbody>
+    <colgroup>
+        <col style="width: 3em">
+        <col style="border-right: 2px solid var(--border-2); width: 3em">
+        <col span="4" style="width: 5em">
+        <col style="border-left: 2px solid var(--border-2); width: 6em">
+    </colgroup>
+    <thead style>
+        <tr>
+            <th>x</th>
+            <th>y</th>
+            <th>!x</th>
+            <th>!y</th>
+            <th>x & y</th>
+            <th>!(x | y)</th>
+            <th>x + y</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>-1</td>
+            <td>-1</td>
+            <td>0</td>
+            <td>-1</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>-1</td>
+            <td>-1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>-1</td>
+        </tr>
+        <tr>
+            <td>-1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>-1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>-1</td>
+        </tr>
+        <tr>
+            <td>-1</td>
+            <td>-1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>-1</td>
+            <td>0</td>
+            <td>-2</td>
+        </tr>
+    </tbody>
 </table>
 </code>
 
@@ -432,61 +435,61 @@ They evaluate all the bitwise expression as if they were 1 bit or boolean expres
 
 <code>
 <table>
-  <colgroup>
-    <col style="width: 3em">
-    <col style="border-right: 2px solid var(--border-2); width: 3em">
-    <col span="4" style="width: 5em">
-    <col style="border-left: 2px solid var(--border-2); width: 6em">
-  </colgroup>
-  <thead style>
-    <tr>
-      <th>x</th>
-      <th>y</th>
-      <th>!x</th>
-      <th>!y</th>
-      <th>x & y</th>
-      <th>!(x | y)</th>
-      <th>x + y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>2</td>
-    </tr>
-  </tbody>
+    <colgroup>
+        <col style="width: 3em">
+        <col style="border-right: 2px solid var(--border-2); width: 3em">
+        <col span="4" style="width: 5em">
+        <col style="border-left: 2px solid var(--border-2); width: 6em">
+    </colgroup>
+    <thead style>
+        <tr>
+            <th>x</th>
+            <th>y</th>
+            <th>!x</th>
+            <th>!y</th>
+            <th>x & y</th>
+            <th>!(x | y)</th>
+            <th>x + y</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>2</td>
+        </tr>
+    </tbody>
 </table>
 </code>
 
@@ -527,51 +530,51 @@ We will use the truth table because it looks the cutest.
 
 <code>
 <table>
-  <colgroup>
-    <col style="width: 3em">
-    <col style="border-right: 2px solid var(--border-2); width: 3em">
-    <col span="2" style="width: 5em">
-    <col style="border-left: 2px solid var(--border-2); width: 6em">
-  </colgroup>
-  <thead style>
-    <tr>
-      <th>x</th>
-      <th>y</th>
-      <th>x ^ y</th>
-      <th>!(x ^ y)</th>
-      <th>1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-  </tbody>
+    <colgroup>
+        <col style="width: 3em">
+        <col style="border-right: 2px solid var(--border-2); width: 3em">
+        <col span="2" style="width: 5em">
+        <col style="border-left: 2px solid var(--border-2); width: 6em">
+    </colgroup>
+    <thead style>
+        <tr>
+            <th>x</th>
+            <th>y</th>
+            <th>x ^ y</th>
+            <th>!(x ^ y)</th>
+            <th>1</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+    </tbody>
 </table>
 </code>
 
@@ -591,51 +594,51 @@ but we made the mistake when reading off the solution.)
 
 <code>
 <table>
-  <colgroup>
-    <col style="width: 3em">
-    <col style="border-right: 2px solid var(--border-2); width: 3em">
-    <col span="2" style="width: 5em">
-    <col style="border-left: 2px solid var(--border-2); width: 6em">
-  </colgroup>
-  <thead style>
-    <tr>
-      <th>x</th>
-      <th>y</th>
-      <th>x ^ y</th>
-      <th>!(x ^ y)</th>
-      <th>-1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-  </tbody>
+    <colgroup>
+        <col style="width: 3em">
+        <col style="border-right: 2px solid var(--border-2); width: 3em">
+        <col span="2" style="width: 5em">
+        <col style="border-left: 2px solid var(--border-2); width: 6em">
+    </colgroup>
+    <thead style>
+        <tr>
+            <th>x</th>
+            <th>y</th>
+            <th>x ^ y</th>
+            <th>!(x ^ y)</th>
+            <th>-1</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+    </tbody>
 </table>
 </code>
 
@@ -644,51 +647,51 @@ e.g. for $c=42$
 
 <code>
 <table>
-  <colgroup>
-    <col style="width: 3em">
-    <col style="border-right: 2px solid var(--border-2); width: 3em">
-    <col span="2" style="width: 5em">
-    <col style="border-left: 2px solid var(--border-2); width: 8em">
-  </colgroup>
-  <thead style>
-    <tr>
-      <th>x</th>
-      <th>y</th>
-      <th>x ^ y</th>
-      <th>!(x ^ y)</th>
-      <th>-42 * (-1)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>-42</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>-42</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>-42</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>-42</td>
-    </tr>
-  </tbody>
+    <colgroup>
+        <col style="width: 3em">
+        <col style="border-right: 2px solid var(--border-2); width: 3em">
+        <col span="2" style="width: 5em">
+        <col style="border-left: 2px solid var(--border-2); width: 8em">
+    </colgroup>
+    <thead style>
+        <tr>
+            <th>x</th>
+            <th>y</th>
+            <th>x ^ y</th>
+            <th>!(x ^ y)</th>
+            <th>-42 * (-1)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+            <td>-42</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>-42</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>-42</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>-42</td>
+        </tr>
+    </tbody>
 </table>
 </code>
 
@@ -696,51 +699,51 @@ In my opinion this looks much more natural in the uniform table:
 
 <code>
 <table>
-  <colgroup>
-    <col style="width: 3em">
-    <col style="border-right: 2px solid var(--border-2); width: 3em">
-    <col span="2" style="width: 5em">
-    <col style="border-left: 2px solid var(--border-2); width: 8em">
-  </colgroup>
-  <thead style>
-    <tr>
-      <th>x</th>
-      <th>y</th>
-      <th>x ^ y</th>
-      <th>!(x ^ y)</th>
-      <th>-42 * (-1)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>-1</td>
-      <td>42</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>42</td>
-    </tr>
-    <tr>
-      <td>-1</td>
-      <td>0</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>42</td>
-    </tr>
-    <tr>
-      <td>-1</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>-1</td>
-      <td>42</td>
-    </tr>
-  </tbody>
+    <colgroup>
+        <col style="width: 3em">
+        <col style="border-right: 2px solid var(--border-2); width: 3em">
+        <col span="2" style="width: 5em">
+        <col style="border-left: 2px solid var(--border-2); width: 8em">
+    </colgroup>
+    <thead style>
+        <tr>
+            <th>x</th>
+            <th>y</th>
+            <th>x ^ y</th>
+            <th>!(x ^ y)</th>
+            <th>-42 * (-1)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>-1</td>
+            <td>42</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>-1</td>
+            <td>-1</td>
+            <td>0</td>
+            <td>42</td>
+        </tr>
+        <tr>
+            <td>-1</td>
+            <td>0</td>
+            <td>-1</td>
+            <td>0</td>
+            <td>42</td>
+        </tr>
+        <tr>
+            <td>-1</td>
+            <td>-1</td>
+            <td>0</td>
+            <td>-1</td>
+            <td>42</td>
+        </tr>
+    </tbody>
 </table>
 </code>
 

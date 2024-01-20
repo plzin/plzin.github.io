@@ -6,7 +6,10 @@ macros:
     - v: \mathbf{v}
     - x: \mathbf{x}
     - Z: \mathbb{Z}
-summary: 'How to deobfuscate (linear) MBA'
+summary: >-
+    We discuss the deobfuscation of linear MBA and how that corresponds
+    to finding small vectors in the solution lattice of a linear system.
+    We discuss methods of finding such a vector.
 ---
 
 You should read [Part 1](/posts/mba), before coming here, but reading [Part 2](/posts/linear-systems-mod-n)
