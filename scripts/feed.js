@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { Feed } from 'feed'
-import { getSortedPosts } from '../lib/posts.js'
+import { getSortedHeaderData } from '../lib/posts.js'
 
 async function generateFeed() {
     console.log('Generating feed.')
@@ -18,18 +18,19 @@ async function generateFeed() {
         }
     })
 
-    const posts = await getSortedPosts()
+    const posts = await (await getSortedHeaderData()).postsData
     posts.forEach((post) => {
+        const url = `https://plzin.github.io/posts/${post.id}`
         feed.addItem({
             title: post.plain_title ?? post.title,
-            id: post.id,
-            link: `https://plzin.github.io/posts/${post.id}`,
+            id: url,
+            link: url,
             date: new Date(post.date),
-            content: post.contentHtml
+            description: post.summary,
         })
     })
 
-    fs.mkdirSync('./public/feed/')
+    fs.mkdirSync('./public/feed/', { recursive: true })
     fs.writeFileSync('./public/feed/rss.xml', feed.rss2())
     fs.writeFileSync('./public/feed/atom.xml', feed.atom1())
 }

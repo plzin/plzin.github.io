@@ -2,6 +2,7 @@
 title: '$0.\overline{9} \stackrel?= 1$'
 plain_title: '0.999... = 1'
 date: '2022-04-05'
+summary: 'Introduction to non-standard analysis in the context of understanding 0.999... = 1'
 ---
 
 Do you think $0.999\ldots = 1$? How sure are you? Could you prove it? How would you explain it to someone just learning about real numbers?

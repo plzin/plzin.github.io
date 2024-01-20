@@ -12,6 +12,7 @@ macros:
   - T: \mathbf{T}
   - U: \mathbf{U}
   - Z: \mathbb{Z}
+summary: 'Solving Systems of Linear Equations mod n via the "Hermite Normal Form" and "Diagonalization"'
 ---
 
 In this post we are going to try and solve systems of linear congruences, i.e.

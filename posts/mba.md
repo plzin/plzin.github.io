@@ -3,6 +3,7 @@ title: 'Mixed Boolean-Arithmetic (Part 1): Introduction'
 date: '2023-04-24'
 macros:
   - Z: \mathbb{Z}
+summary: 'Introduction to Mixed Boolean-Arithmetic'
 ---
 
 What does the following function do?

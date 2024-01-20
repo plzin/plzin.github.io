@@ -6,6 +6,7 @@ macros:
     - v: \mathbf{v}
     - x: \mathbf{x}
     - Z: \mathbb{Z}
+summary: 'How to deobfuscate (linear) MBA'
 ---
 
 You should read [Part 1](/posts/mba), before coming here, but reading [Part 2](/posts/linear-systems-mod-n)

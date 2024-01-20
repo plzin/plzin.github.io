@@ -3,6 +3,7 @@ title: 'Mixed Boolean-Arithmetic (Part 1.5): The Fundamental Theorem of Mixed Bo
 date: '2023-04-24'
 macros:
   - Z: \mathbb{Z}
+summary: 'Understanding MBA formally, proving the "Fundamental Theorem of Mixed Boolean-Arithmetic", and clarifying some related confusing things'
 ---
 
 This part was originally an appendix to Part 1.

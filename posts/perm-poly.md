@@ -9,6 +9,7 @@ macros:
     - V: \mathbf{V}
     - y: \mathbf{y}
     - x: \mathbf{x}
+summary: 'Properties of Polynomials mod n and in particular when n is a power of two'
 ---
 
 In this post we are going to find polynomials $p, q\in \P$,
