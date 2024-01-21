@@ -3,7 +3,7 @@ import styles from './layout.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
 import ThemeSwitcher from './theme-switcher'
-import { IoLogoTwitter, IoLogoGithub } from 'react-icons/io5'
+import { IoLogoTwitter, IoLogoGithub, IoLogoRss } from 'react-icons/io5'
 
 const name = 'Justus Polzin'
 export const siteTitle = 'Justus Polzin\'s Blog'
@@ -22,22 +22,27 @@ export default function Layout({ children, home }) {
                             alt={name}
                         />
                         <h1 className={utilStyles.heading2Xl}>{name}</h1>
-                        <a href="https://twitter.com/justuspolzin" target="_blank">
-                            <div className={styles.socials}>
-                                <IoLogoTwitter size={30} />
-                                <div className={styles.socialHandle}>
-                                    @justuspolzin
-                                </div>
+                        <a className={styles.socials} href="https://twitter.com/justuspolzin" target="_blank">
+                            <IoLogoTwitter size={30} />
+                            <div className={styles.socialHandle}>
+                                @justuspolzin
                             </div>
                         </a>
-                        <a href="https://github.com/plzin" target="_blank">
-                            <div className={styles.socials}>
-                                <IoLogoGithub size={30} />
-                                <div className={styles.socialHandle}>
-                                    @plzin
-                                </div>
+                        <a className={styles.socials} href="https://github.com/plzin" target="_blank">
+                            <IoLogoGithub size={30} />
+                            <div className={styles.socialHandle}>
+                                @plzin
                             </div>
                         </a>
+                        <div className={styles.socials}>
+                            <IoLogoRss size={25} />
+                            <a href="/feed/rss.xml" className={styles.socialHandle}>
+                                rss
+                            </a>
+                            <a href="/feed/atom.xml" className={styles.socialHandle}>
+                                atom
+                            </a>
+                        </div>
                         <ThemeSwitcher />
                     </>
                 ) : (
