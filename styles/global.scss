@@ -111,8 +111,8 @@ th {
 }
 
 ul {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 details {
@@ -137,14 +137,17 @@ details[open] summary {
 }
 
 blockquote {
-    background-color: var(--background);
+    background-color: var(--bg-2);
     border-left: 4px solid var(--primary);
+    padding: 0.5em 2em;
+    :first-child {
+        font-style: italic;
+    }
 }
 
 div.theorem {
     background-color: var(--bg-2);
     padding: 0.2em 0.5em 0.4em 0.7em;
-    //border: 1px solid var(--border);
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     border-left: 4px solid var(--primary);
@@ -161,18 +164,10 @@ div.theorem {
         font-family: serif;
         font-size: 1.05em;
         font-variant-caps: small-caps;
+        margin-bottom: 0.3em;
     }
 }
 
-//.qed-line {
-//    display: flex;
-//    justify-content: space-between;
-//
-//    &::after {
-//        text-align: right;
-//        content: "◼";
-//    }
-//}
 div.qed-line {
     text-align: right;
     &::after {

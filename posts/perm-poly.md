@@ -720,7 +720,7 @@ meaning there exists a $c\in\Z_p$ such that no $x\in\Z_p$ is
 mapped to $c$ via $f$.
 But since $f(x+np) = f(x)\bmod p$, no element is ever mapped
 into the equivalence class of $c$ ($\{c, c+p, \dots\}$) mod $p^m$,
-so the function is not bijection.
+so the function is not a bijection.
 
 Now suppose that $f$ is a permutation mod $p$, but that $f'(c)=0$ mod $p$,
 for some $c\in\Z_p$.

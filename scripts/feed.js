@@ -18,7 +18,7 @@ async function generateFeed() {
         }
     })
 
-    const posts = await (await getSortedHeaderData()).postsData
+    const posts = (await getSortedHeaderData()).postsData
     posts.forEach((post) => {
         const url = `https://plzin.github.io/posts/${post.id}`
         feed.addItem({
