@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://plzin.github.io/</id>
     <title>Justus Polzin's Blog</title>
-    <updated>2024-01-21T11:45:36.195Z</updated>
+    <updated>2024-02-04T23:16:03.331Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Justus Polzin</name>
@@ -12,6 +12,13 @@
     <subtitle>Blog about computers, numbers, and sometimes other things</subtitle>
     <logo>https://plzin.github.io/images/profile.png</logo>
     <icon>https://plzin.github.io/images/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Why are polynomials so fundamental?]]></title>
+        <id>https://plzin.github.io/posts/polynomials</id>
+        <link href="https://plzin.github.io/posts/polynomials"/>
+        <updated>2024-02-05T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A very non-technical, detailed answer to the question of why polynomials are so fundamental, that their are forcefully taught to high school students. Hopefully interested high school students could understand this post, but I think this might be something not everyone who has taken math on the university level has considered.]]></summary>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Mixed Boolean-Arithmetic (Part 4): Deobfuscation]]></title>
         <id>https://plzin.github.io/posts/mba-deobf</id>
