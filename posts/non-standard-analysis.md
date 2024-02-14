@@ -225,7 +225,7 @@ This also makes comparing two hyperreals difficult, but we are going to ignore t
 
 Let us get to the nitty gritty, is $0.\overline{9} = 1$ in the hyperreals?
 Usually, the top comment when this question is asked is something like: "Yes, the question doesn't have anything to do with the hyperreals".
-Why do people say that? We've seen that the reals are a supset of the hyperreals and $0.\overline{9}$ is real and equal to 1,
+Why do people say that? We've seen that the reals are a subset of the hyperreals and $0.\overline{9}$ is real and equal to 1,
 so it is also equal to 1 in the hyperreals.
 This is true, we defined $0.\overline{9}$ to be a real number, but it is also missing the point.
 If someone has the intuition that $0.\overline{9}$ is infinitesimally smaller than 1 and there exist infinitesimally small numbers in the hyperreals,

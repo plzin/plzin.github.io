@@ -108,8 +108,8 @@ I am not yet done, but I think at this point it also clear that it
 is very sensible to introduce the notation
 $$x^n = \underbrace{x\cdot\ldots\cdot x}_{n\text{-times}}$$
 where $n$ is an integer greater than or equal to 0.
-Sometimes you see the question "Why don't we "allow" any exponents
-in polynomials?".
+Sometimes you see the question "Why don't we "allow" any
+(i.e. negative, fractional, or even irrational) exponents in polynomials?".
 I think the real reason is that we want "polynomial expressions" to act as a normal form
 for expressions using only these three operations.
 We just use the notation as a textual replacement to avoid having to write
