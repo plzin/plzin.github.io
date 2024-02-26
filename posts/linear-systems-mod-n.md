@@ -670,10 +670,12 @@ $$
 
 We are lucky here, because we can eliminate the 3 in the second column directly.
 In general this need not happen.
-We would then have to do the same procedure but with column operations, which might make entries in the row reappear.
+We would then have to do the same procedure but with column operations,
+which might make entries in the row reappear.
 This is not a problem, however.
-Important is, that the diagonal entry, which is also the pivot, is getting smaller
-in each iteration, so eventually we will be able to use it to eliminate both the row and column.
+The only thing that is important, is that the diagonal entry, which is also the pivot,
+is getting smaller in each iteration.
+So eventually we will be able to use it to eliminate both the row and column.
 Nevertheless, in this instance we can now use a single column operations to eliminate the 3.
 
 $$
