@@ -21,9 +21,8 @@ I was recently reminded of this question when I saw this tweet:
 I will explain at the end how "the necessity of the complex numbers" ultimately stems from
 "the necessity of polynomials" but maybe you can already see how.
 
-I think the property of polynomials that I am about to explain
-might an unstated things that people, who have understood it,
-think is so obvious that they don't realize that others may not know it.
+I think the property of polynomials that I will explain is so obvious in hindsight,
+that people who have seen it, often don't even realize that others may not know.
 
 I remember reading a reddit post about this topic years ago where the
 top comment was about eigenvalues and the characteristic polynomial of a matrix,
