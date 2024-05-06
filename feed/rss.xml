@@ -4,7 +4,7 @@
         <title>Justus Polzin's Blog</title>
         <link>https://plzin.github.io/</link>
         <description>Blog about computers, numbers, and sometimes other things</description>
-        <lastBuildDate>Wed, 06 Mar 2024 23:42:10 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 06 May 2024 19:17:41 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -12,6 +12,13 @@
             <url>https://plzin.github.io/images/profile.png</url>
             <link>https://plzin.github.io/</link>
         </image>
+        <item>
+            <title><![CDATA[Multivariate Polynomials mod m]]></title>
+            <link>https://plzin.github.io/posts/zero-polys-mod-n</link>
+            <guid>https://plzin.github.io/posts/zero-polys-mod-n</guid>
+            <pubDate>Wed, 01 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[We find all multivariate polynomials that are zero mod m.]]></description>
+        </item>
         <item>
             <title><![CDATA[Why are polynomials so fundamental?]]></title>
             <link>https://plzin.github.io/posts/polynomials</link>
