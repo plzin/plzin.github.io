@@ -1,6 +1,6 @@
 ---
 title: 'Multivariate Polynomials mod m'
-date: '2024-05-01'
+date: '2024-05-06'
 macros:
     - N: \mathbb{N}
     - Z: \mathbb{Z}
@@ -26,7 +26,7 @@ $$\ZI = \{p_m\ |\ P\in\P: p_m = 0, \text{i.e.} \forall x\in\Z: p_m(x) = 0\}$$
 
 <div class="theorem">
 <div>Generators of $\ZI$</div>
-Define 
+Define
 $$Z_{i_1, \ldots, i_n} = \frac{m}{\gcd(i_1!\cdot\ldots\cdot i_n!, m)}(X_1)_{i_1}\cdot\ldots\cdot (X_n)_{i_n}$$
 
 Then
@@ -124,7 +124,7 @@ $$N=\sum_i c_i(X)_i$$
 We will show inductively that the coefficients have the given form, i.e. that actually $N=\sum_i d_iZ_i$.
 
 For $k=0$, we will consider $n(0)$.
-Obviously, $n(0)=c_0$, since $(0)_i=0$ for $i>0$. 
+Obviously, $n(0)=c_0$, since $(0)_i=0$ for $i>0$.
 So $c_0$ has to be zero (or a multiple of the modulus $m$, if you think of the polynomials as being over $\Z$).
 
 Similarly, for $k>0$, we will consider $n(k)$.
