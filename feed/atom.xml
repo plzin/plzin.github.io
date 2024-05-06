@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://plzin.github.io/</id>
     <title>Justus Polzin's Blog</title>
-    <updated>2024-05-06T19:17:41.054Z</updated>
+    <updated>2024-05-06T19:50:13.296Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Justus Polzin</name>
@@ -16,7 +16,7 @@
         <title type="html"><![CDATA[Multivariate Polynomials mod m]]></title>
         <id>https://plzin.github.io/posts/zero-polys-mod-n</id>
         <link href="https://plzin.github.io/posts/zero-polys-mod-n"/>
-        <updated>2024-05-01T00:00:00.000Z</updated>
+        <updated>2024-05-06T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[We find all multivariate polynomials that are zero mod m.]]></summary>
     </entry>
     <entry>
