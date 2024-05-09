@@ -27,7 +27,7 @@ export default function Post({ postData }) {
         function draw_diagram(clr_fn) {
             console.log('Draw diagram')
             let svg = new Object()
-            svg.str = '<svg width="500" height="500" style="display:block;margin:auto">'
+            svg.str = '<svg viewBox="0 0 500 500" style="display:block;margin:auto;width:500px;max-width:100%">'
             const opts = {
                 stroke: 'var(--foreground)',
                 strokeWidth: 2,
