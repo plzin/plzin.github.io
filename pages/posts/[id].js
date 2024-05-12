@@ -55,7 +55,7 @@ export default function Post({ postData }) {
             } else if (x <= a && y <= b) {
                 return 'red'
             } else {
-                return 'blue'
+                return 'dodgerblue'
             }
         })
 
@@ -67,7 +67,7 @@ export default function Post({ postData }) {
             } else if (sum == k) {
                 return 'gold'
             } else {
-                return 'blue'
+                return 'dodgerblue'
             }
         })
 
