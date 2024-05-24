@@ -23,7 +23,7 @@ which is also known as the falling factorial.
 Let $P\in\P$, we will write $p_m: \Z^n\longrightarrow \Z_m$, for the induced function mod m.
 
 Let $\ZI$ be the ideal of polynomials in $\P$ that evaluate to zero (mod m) everywhere, i.e.
-$$\ZI = \{p_m\ |\ P\in\P: p_m = 0, \text{i.e.} \forall x\in\Z: p_m(x) = 0\}$$
+$$\ZI = \{P\ |\ P\in\P: p_m = 0, \text{i.e.} \forall x\in\Z: p_m(x) = 0\}$$
 
 <div class="theorem">
 <div>Generators of $\ZI$</div>
@@ -208,7 +208,7 @@ SVG2
 # On Minimality
 In the [Part 3 of the MBA series](/posts/perm-poly), I already discussed that for the univariate case,
 when the modulus $m$ is a power of two, then every $Z_{2i+1}$ is not needed,
-because it is an $Z[X]$-multiple of the previous $Z_{2i}$, which follows from the fact
+because it is an $\Z[X]$-multiple of the previous $Z_{2i}$, which follows from the fact
 that it has the same leading coefficient, as discussed there.
 In general, the same idea applies: If $Z_{i_1,\ldots,i_n}$ has the same leading coefficient as any of
 $Z_{i_1-1,\ldots,i_n},\ldots,Z_{i_1,\ldots,i_n-1}$, then it is obviously a multiple of that polynomial
