@@ -143,9 +143,9 @@ and thus not needed in the generating set.
 <div class="qed-line"></div>
 
 # Multivariate $\ZI$
-One idea you might have, is whether the multivariate $\ZI$ is just the product of the univariate $\ZI$ in each variable,
+One idea you might have, is whether the multivariate $\ZI$ is just the product of the univariate $\ZU$ in each variable,
 but this is not true.
-For example, consider the polynomial $(2X^2+2X)(2Y^2+2Y)=4X^2Y^2+4X^2Y+4XY^2+4Y$ that is 0 everywhere mod 16,
+For example, consider the polynomial $(2X^2+2X)(2Y^2+2Y)=4X^2Y^2+4X^2Y+4XY^2+4XY$ that is 0 everywhere mod 16,
 but $(2X^2+2X)$ is not 0 mod 16.
 Nevertheless, the simple (but not quite as simple) generalization of the univariate case that I showed at the beginning is true.
 
