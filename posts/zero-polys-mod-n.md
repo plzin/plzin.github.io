@@ -38,7 +38,7 @@ where $d$ is the smallest integer such that $m$ divides $d!$.
 Note that this generating set is not at all minimal. We will discuss this at the end.
 
 # Polynomial Bases
-(Multivariate) polynomials over a commutative ring $R$ form a free $R$-Module.
+(Multivariate) polynomials over a commutative ring $R$ form a free $R$-module.
 If you don't know what that means, then just think of it as a vector space.
 So in particular, they have a basis.
 Let's consider univariate polynomials in $X$ for the moment.
@@ -93,7 +93,7 @@ $$Z_i = \frac{m}{\gcd(i!, m)}(X)_i$$
 
 This result was already stated in [Part 3 of the MBA series](/posts/perm-poly),
 but I didn't prove it and instead referred to [Singmaster](https://doi.org/10.1016/0022-314X(74)90031-6).
-We will prove it here, because the prove ourselves, because (I think) Singmaster's proof is more difficult
+We will prove it here ourselves, because (I think) Singmaster's proof is more difficult
 to generalize to multiple variables.
 
 The idea is to first show that the $Z_i$ are zero everywhere,
