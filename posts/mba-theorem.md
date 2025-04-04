@@ -298,7 +298,7 @@ But if we restrict the operations to be bitwise expressions,
 then the fundamental theorem tells us that we only need to consider
 the inputs 0/-1 (or 0/1), because equality everywhere is guaranteed.
 
-Restricting the table two the inputs 0/1, we get this:
+Restricting the table to the inputs 0/1, we get this:
 
 <code>
 <table>
@@ -360,7 +360,7 @@ Restricting the table two the inputs 0/1, we get this:
 </table>
 </code>
 
-To me this is a bit ugly, because e.g. $\lnot 1 = -2$, so if we had 8-bit numbers it would be 254.
+To me, this is a bit ugly, because e.g. $\lnot 1 = -2$, so if we had 8-bit numbers it would be 254.
 But this is (of course) correct and ultimately does not matter.
 In the example from Part 1, I intentionally chose rewrite operations without negation
 so we would not run into this.

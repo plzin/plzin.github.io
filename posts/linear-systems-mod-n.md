@@ -634,9 +634,9 @@ Whereas the row reduction algorithm over $\Z_n$ was similar to the Hermite norma
 But again, the SNF is defined for $\Z$-matrices and not unique for $\Z_n$.
 Moreover the SNF places restriction on the elements in the diagonal, which causes the most trouble for coming up with an algorithm, but we are not going to need it here.
 
-Note that the "diagonalization" here has nothing to do with the usual one in linear algebra, where you find an invertible matrix $\U$,
+Note, that the "diagonalization" here has nothing to do with the usual one in linear algebra, where you find an invertible matrix $\U$,
 such that $\U\A\U^{-1}$ is diagonal, which can't even be done for every matrix.
-Instead we are going to find invertible matrices $\S$, $\T$ such that $\D=\S\A\T$ is diagonal, which can always be done.
+Instead, we are going to find invertible matrices $\S$, $\T$ such that $\D=\S\A\T$ is diagonal, which can always be done.
 
 The algorithm for computing the diagonal matrix uses exactly the same ideas we've already seen.
 In the first step we eliminate all entries in the first row and first column except the first entry which is on the diagonal.
@@ -669,7 +669,7 @@ $$
 $$
 
 We are lucky here, because we can eliminate the 3 in the second column directly.
-In general this need not happen.
+In general, this need not happen.
 We would then have to do the same procedure but with column operations,
 which might make entries in the row reappear.
 This is not a problem, however.
