@@ -12,9 +12,7 @@
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.3"
-  },
-  "devDependencies": {
+    "next": "15.3.3",
     "@eslint/eslintrc": "^3",
     "@stylistic/eslint-plugin": "^4.4.1",
     "@tailwindcss/postcss": "^4",
