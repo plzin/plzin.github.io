@@ -135,81 +135,9 @@ the expressions used for rewriting (`x & y`, `x ^ y`)
 for all possible inputs.
 We will assume `x` and `y` are 2-bit numbers.
 
-<code>
-<table style="width: 50%">
-    <colgroup>
-        <col style="width: 3em">
-        <col style="border-right: 2px solid var(--border-2); width: 3em">
-    </colgroup>
-    <thead style>
-        <tr>
-            <th>x</th>
-            <th>y</th>
-            <th>x ^ y</th>
-            <th>x & y</th>
-            <th>x + y</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>2</td>
-            <td>2</td>
-            <td>0</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>3</td>
-            <td>3</td>
-            <td>0</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>3</td>
-            <td>0</td>
-            <td>3</td>
-            <td>2</td>
-        </tr>
-    </tbody>
-</table>
-</code>
+```js run
+makeTruncatedFullTable(['x ^ y', 'x & y', 'x + y'], 4n, 6)
+```
 
 By adding the corresponding columns (and multiplying the `x & y` column by 2),
 you can verify that indeed `(x ^ y) + 2 * (x & y)` equals `x + y` (mod 4).
@@ -226,7 +154,7 @@ $$
   .. & .. \\
   0 & 3 \\
 \end{array} \right]}_{\mathbf{A}}
-\underbrace{\left[\begin{array}{c} 1 \\ 2 \end{array} \right]}_{\mathbf{x}} 
+\underbrace{\left[\begin{array}{c} 1 \\ 2 \end{array} \right]}_{\mathbf{x}}
 = \underbrace{\left[\begin{array}{c}
   0 \\ 1 \\ 2 \\ 3 \\ 1 \\ 2 \\ .. \\ 2 \\
 \end{array} \right]}_{\mathbf{b}}
@@ -264,53 +192,9 @@ This is what I call the "Fundamental Theorem of Mixed Boolean-Arithmetic".
 It will be proved in Part 1.5.
 In the example above, we would only have the following table with 4 rows instead of 16 or in general $2^n$ instead of $2^{wn}$.
 
-<code>
-<table style="width: 50%">
-    <colgroup>
-        <col style="width: 3em">
-        <col style="border-right: 2px solid var(--border-2); width: 3em">
-    </colgroup>
-    <thead>
-        <tr>
-            <th>x</th>
-            <th>y</th>
-            <th>x ^ y</th>
-            <th>x & y</th>
-            <th>x + y</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-        </tr>
-    </tbody>
-</table>
-</code>
+```js run
+makeTruthTable(['x ^ y', 'x & y', 'x + y'], 4n)
+```
 
 `x + y` is not bitwise, why is it still allowed?
 That's because the set of functions allowed is actually slightly bigger.
@@ -496,12 +380,16 @@ I'm sure you can come up with many ways to combine these primitives,
 including with other obfuscation techniques.
 
 # What's next?
-If you want to try this for yourself, check out my web interface [here](https://plzin.github.io/mba-wasm/).
-My initial implementation using arbitrary precision integers can be found [here](https://github.com/plzin/mba).
+If you want to try this for yourself, check out my web interface [here](https://plzin.github.io/mba/).
+My rust implementation can be found [here](https://github.com/plzin/mba).
 This is the first post in a 4.5 part series.
-There is a [Part 1.5](/posts/mba-theorem) where we prove the the
-"Fundamental Theorem of Mixed Boolean-Arithmetic" and discuss things more formally,
-so if you actually want to understand the details then check it out.
-The [second post](/posts/linear-systems-mod-n) is about solving linear systems in $\Z_n$.
-The [third post](/posts/perm-poly) is about permutation polynomials.
-And the [last post](/posts/mba-deobf) is about deobfuscation.
+- In [Part 1.5](/posts/mba-theorem) we prove the the
+  "Fundamental Theorem of Mixed Boolean-Arithmetic" and discuss things more formally,
+  so if you actually want to understand the details then check it out.
+- [Part 2](/posts/linear-systems-mod-n) is about solving linear systems in $\Z_n$.
+- [Part 3](/posts/perm-poly) is about permutation polynomials.
+- [Part 4](/posts/mba-deobf) is about deobfuscation.
+
+```js run
+navbar(0)
+```

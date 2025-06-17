@@ -7,13 +7,14 @@ summary: >-
     We formalize all the parts of linear MBA, which allows us to prove the
     "Fundamental Theorem of Mixed Boolean-Arithmetic" from Part 1.
     Afterwards, I clarify some confusing things about linear MBA.
+jsStem: mba
 ---
 
 This part was originally an appendix to Part 1.
 We will treat MBA very formally and prove the "Fundamental Theorem".
 I don't recommend reading this part, unless you
 - want to see the proof
-- are trying to implement this and are confused about details (though you could just read [my implementation](https://github.com/plzin/mba-wasm))
+- are trying to implement this and are confused about details (though you could just read [my implementation](https://github.com/plzin/mba))
 
 It is totally expected for you to not understand all the details from Part 1
 and I didn't even show the details as they require formality (in my opinion).
@@ -218,74 +219,9 @@ which just lists the values of all expressions for all inputs.
 Even for 2-bit numbers it has 16 rows (for 32-bit numbers it would have $2^{64}$ rows),
 so I have omitted some rows, but here is what it would look like.
 
-<code>
-<table>
-    <colgroup>
-        <col style="width: 3em">
-        <col style="border-right: 2px solid var(--border-2); width: 3em">
-        <col span="4" style="width: 5em">
-        <col style="border-left: 2px solid var(--border-2); width: 6em">
-    </colgroup>
-    <thead style>
-        <tr>
-            <th>x</th>
-            <th>y</th>
-            <th>!x</th>
-            <th>!y</th>
-            <th>x & y</th>
-            <th>!(x | y)</th>
-            <th>x + y</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>3</td>
-            <td>3</td>
-            <td>0</td>
-            <td>3</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>1</td>
-            <td>3</td>
-            <td>2</td>
-            <td>0</td>
-            <td>2</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>3</td>
-            <td>0</td>
-            <td>0</td>
-            <td>3</td>
-            <td>0</td>
-            <td>2</td>
-        </tr>
-    </tbody>
-</table>
-</code>
+```js run
+makeTruncatedFullTable(['~x', '~y', 'x & y', '~(x | y)', 'x + y'], 4n, 3)
+```
 
 These tables work for any functions, i.e. also `x * y`,
 because all inputs are present.
@@ -300,198 +236,34 @@ the inputs 0/-1 (or 0/1), because equality everywhere is guaranteed.
 
 Restricting the table to the inputs 0/1, we get this:
 
-<code>
-<table>
-    <colgroup>
-        <col style="width: 3em">
-        <col style="border-right: 2px solid var(--border-2); width: 3em">
-        <col span="4" style="width: 5em">
-        <col style="border-left: 2px solid var(--border-2); width: 6em">
-    </colgroup>
-    <thead style>
-        <tr>
-            <th>x</th>
-            <th>y</th>
-            <th>!x</th>
-            <th>!y</th>
-            <th>x & y</th>
-            <th>!(x | y)</th>
-            <th>x + y</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>3</td>
-            <td>3</td>
-            <td>0</td>
-            <td>3</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>1</td>
-            <td>3</td>
-            <td>2</td>
-            <td>0</td>
-            <td>2</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0</td>
-            <td>2</td>
-            <td>3</td>
-            <td>0</td>
-            <td>2</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>2</td>
-            <td>2</td>
-            <td>1</td>
-            <td>2</td>
-            <td>2</td>
-        </tr>
-    </tbody>
-</table>
-</code>
+```js run
+make01Table(['~x', '~y', 'x & y', '~(x | y)', 'x + y'], 4n)
+```
 
-To me, this is a bit ugly, because e.g. $\lnot 1 = -2$, so if we had 8-bit numbers it would be 254.
+To me, this is a bit ugly, because e.g. $\lnot 1 = 2$ mod 4, with 8-bit numbers it would be 254,
+so we don't stay inside our set of inputs 0/1, even when evaluating purely bitwise expressions.
 But this is (of course) correct and ultimately does not matter.
 In the example from Part 1, I intentionally chose rewrite operations without negation
 so we would not run into this.
 
 I prefer and implement the method using the inputs 0/-1.
-The reason this is more beautiful is that all the bits have the same value.
+The reason this is more beautiful is that all the bits keep having the same value
+when evaluating purely bitwise expressions.
 To illustrate, let me write 3 = -1 in the table.
 
-<code>
-<table>
-    <colgroup>
-        <col style="width: 3em">
-        <col style="border-right: 2px solid var(--border-2); width: 3em">
-        <col span="4" style="width: 5em">
-        <col style="border-left: 2px solid var(--border-2); width: 6em">
-    </colgroup>
-    <thead style>
-        <tr>
-            <th>x</th>
-            <th>y</th>
-            <th>!x</th>
-            <th>!y</th>
-            <th>x & y</th>
-            <th>!(x | y)</th>
-            <th>x + y</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>-1</td>
-            <td>-1</td>
-            <td>0</td>
-            <td>-1</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>-1</td>
-            <td>-1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>-1</td>
-        </tr>
-        <tr>
-            <td>-1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>-1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>-1</td>
-        </tr>
-        <tr>
-            <td>-1</td>
-            <td>-1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>-1</td>
-            <td>0</td>
-            <td>-2</td>
-        </tr>
-    </tbody>
-</table>
-</code>
+```js run
+makeUniformTable(['~x', '~y', 'x & y', '~(x | y)', 'x + y'], 4n)
+```
 
 We will call this the uniform table.
 This is not the version you will see in most papers (including the original one).
-They evaluate all the bitwise expression as if they were 1 bit or boolean expressions.
+They evaluate all the bitwise expression as if they were 1 bit or boolean expressions
+and the multiplication and addition (for linear combinations) are evaluated using the
+full integer width.
 
-<code>
-<table>
-    <colgroup>
-        <col style="width: 3em">
-        <col style="border-right: 2px solid var(--border-2); width: 3em">
-        <col span="4" style="width: 5em">
-        <col style="border-left: 2px solid var(--border-2); width: 6em">
-    </colgroup>
-    <thead style>
-        <tr>
-            <th>x</th>
-            <th>y</th>
-            <th>!x</th>
-            <th>!y</th>
-            <th>x & y</th>
-            <th>!(x | y)</th>
-            <th>x + y</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>2</td>
-        </tr>
-    </tbody>
-</table>
-</code>
+```js run
+makeTruthTable(['~x', '~y', 'x & y', '~(x | y)', 'x + y'], 4n)
+```
 
 We will call this the truth table.
 This looks very cool, but it is not immediately clear why this should work.
@@ -528,55 +300,9 @@ which is ultimately the root of all confusion and sign errors.
 So suppose we want to obfuscate the constant 1 with the rewrite operations `x ^ y` and `!(x ^ y)`.
 We will use the truth table because it looks the cutest.
 
-<code>
-<table>
-    <colgroup>
-        <col style="width: 3em">
-        <col style="border-right: 2px solid var(--border-2); width: 3em">
-        <col span="2" style="width: 5em">
-        <col style="border-left: 2px solid var(--border-2); width: 6em">
-    </colgroup>
-    <thead style>
-        <tr>
-            <th>x</th>
-            <th>y</th>
-            <th>x ^ y</th>
-            <th>!(x ^ y)</th>
-            <th>1</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-    </tbody>
-</table>
-</code>
+```js run
+makeTruthTable(['x ^ y', '~x ^ y', { expr: '-1', label: '1' }], 4n)
+```
 
 And we read off the solution `(x ^ y) + !(x ^ y) == 1`, right?
 This actually isn't correct, can you see why?
@@ -585,168 +311,33 @@ The problem is that we found a linear combination such that
 $$(x\oplus_* y) + \lnot(x\oplus_* y) = \mathbb{1}_* = -1$$
 
 To avoid confusion, the function $\mathbb{1}_*$ should be called something else.
-In my implementation, I called it [`Ones`](https://github.com/plzin/mba-wasm/blob/d4e7824f2e4d01999c3b1919f6ba16a30e101601/src/uniform_expr.rs#L219)
-to suggest that there is a 1 in each bit,
-but you could also call it -1, because it returns the constant -1 for any integer width.
-Then the table would look the same except for the name of the function and produce the correct linear combination (for -1).
-(The table before also produced the correct linear combination,
-but we made the mistake when reading off the solution.)
+In my code, I called it [`Ones`](https://github.com/plzin/mba/blob/1185b69cbda9e0866c978c87346f86e845ee0d26/mba/src/bitwise_expr.rs#L199)
+to suggest that there is a 1 in each bit, but you could also call it -1, because it returns the constant -1 for any integer width.
+Then the table would look the same except for the label of the function and produce the correct linear combination (for -1).
+(The table before also produced the correct linear combination, but we made the mistake when reading off the solution,
+or when labeling the function depending on your interpretation.)
 
-<code>
-<table>
-    <colgroup>
-        <col style="width: 3em">
-        <col style="border-right: 2px solid var(--border-2); width: 3em">
-        <col span="2" style="width: 5em">
-        <col style="border-left: 2px solid var(--border-2); width: 6em">
-    </colgroup>
-    <thead style>
-        <tr>
-            <th>x</th>
-            <th>y</th>
-            <th>x ^ y</th>
-            <th>!(x ^ y)</th>
-            <th>-1</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-    </tbody>
-</table>
-</code>
+```js run
+makeTruthTable(['x ^ y', '~x ^ y', { expr: '-1', label: 'Ones' }], 4n)
+```
 
 Should we want to obfuscate any constant $c$, we just multiply $\mathbb{1}_* = -1$ by $-c$,
 e.g. for $c=42$
 
-<code>
-<table>
-    <colgroup>
-        <col style="width: 3em">
-        <col style="border-right: 2px solid var(--border-2); width: 3em">
-        <col span="2" style="width: 5em">
-        <col style="border-left: 2px solid var(--border-2); width: 8em">
-    </colgroup>
-    <thead style>
-        <tr>
-            <th>x</th>
-            <th>y</th>
-            <th>x ^ y</th>
-            <th>!(x ^ y)</th>
-            <th>-42 * (-1)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-            <td>-42</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>-42</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>-42</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>-42</td>
-        </tr>
-    </tbody>
-</table>
-</code>
+```js run
+makeTruthTable(['x ^ y', '~x ^ y', { expr: '42', label: '-42 * Ones' }], 256n)
+```
 
 In my opinion this looks much more natural in the uniform table:
 
-<code>
-<table>
-    <colgroup>
-        <col style="width: 3em">
-        <col style="border-right: 2px solid var(--border-2); width: 3em">
-        <col span="2" style="width: 5em">
-        <col style="border-left: 2px solid var(--border-2); width: 8em">
-    </colgroup>
-    <thead style>
-        <tr>
-            <th>x</th>
-            <th>y</th>
-            <th>x ^ y</th>
-            <th>!(x ^ y)</th>
-            <th>-42 * (-1)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>-1</td>
-            <td>42</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>-1</td>
-            <td>-1</td>
-            <td>0</td>
-            <td>42</td>
-        </tr>
-        <tr>
-            <td>-1</td>
-            <td>0</td>
-            <td>-1</td>
-            <td>0</td>
-            <td>42</td>
-        </tr>
-        <tr>
-            <td>-1</td>
-            <td>-1</td>
-            <td>0</td>
-            <td>-1</td>
-            <td>42</td>
-        </tr>
-    </tbody>
-</table>
-</code>
+```js run
+makeUniformTable(['x ^ y', '~x ^ y', { expr: '42', label: '-42 * Ones' }], 256n)
+```
 
 I am repeating myself, but in this table all the columns contain values of the expressions
 that would actually be computed during execution.
 Since we want the result to be 42, the last column has to be 42.
+
+```js run
+navbar(1)
+```

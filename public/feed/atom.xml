@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://plzin.github.io/</id>
+    <title>Justus Polzin's Blog</title>
+    <updated>2025-06-13T18:21:50.238Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>Justus Polzin</name>
+        <uri>https://plzin.github.io/</uri>
+    </author>
+    <link rel="alternate" href="https://plzin.github.io/"/>
+    <subtitle>Blog about computers, numbers, and sometimes other things</subtitle>
+    <logo>https://plzin.github.io/images/profile.png</logo>
+    <icon>https://plzin.github.io/images/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Multivariate Polynomials mod m]]></title>
+        <id>https://plzin.github.io/posts/zero-polys-mod-n</id>
+        <link href="https://plzin.github.io/posts/zero-polys-mod-n"/>
+        <updated>2024-05-06T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We find all multivariate polynomials that are zero mod m.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Why are polynomials so fundamental?]]></title>
+        <id>https://plzin.github.io/posts/polynomials</id>
+        <link href="https://plzin.github.io/posts/polynomials"/>
+        <updated>2024-02-05T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A very non-technical, detailed answer to the question of why polynomials are so fundamental, that their are forcefully taught to high school students. Hopefully interested high school students could understand this post, but I think this might be something not everyone who has taken math on the university level has considered.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mixed Boolean-Arithmetic (Part 4): Deobfuscation]]></title>
+        <id>https://plzin.github.io/posts/mba-deobf</id>
+        <link href="https://plzin.github.io/posts/mba-deobf"/>
+        <updated>2023-04-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We discuss the deobfuscation of linear MBA and how that corresponds to finding small vectors in the solution lattice of a linear system. We discuss methods of finding such a vector.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mixed Boolean-Arithmetic (Part 3): Binary Permutation Polynomials]]></title>
+        <id>https://plzin.github.io/posts/perm-poly</id>
+        <link href="https://plzin.github.io/posts/perm-poly"/>
+        <updated>2023-04-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[I discuss some general properties of polynomials mod n and in particular when n is a power of two. I try to explain intuitively when two such polynomials compute the same function. We then follow Rivest's proof of the characterization of binary permutation polynomials. Finally, we try to find a polynomial that corresponds to the inverse permutation of a binary permutation polynomial.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mixed Boolean-Arithmetic (Part 2): Systems of Linear Equations mod n]]></title>
+        <id>https://plzin.github.io/posts/linear-systems-mod-n</id>
+        <link href="https://plzin.github.io/posts/linear-systems-mod-n"/>
+        <updated>2023-04-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We discuss systems of linear equations mod n. We see how solving a puzzle in a video game can be reduced to such a linear system. We then try to actually solve such systems by reducing them to systems of diophantine equations and solving those with the "Hermite Normal Form" or more directly by "Diagonalization".]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mixed Boolean-Arithmetic (Part 1.5): The Fundamental Theorem of Mixed Boolean-Arithmetic]]></title>
+        <id>https://plzin.github.io/posts/mba-theorem</id>
+        <link href="https://plzin.github.io/posts/mba-theorem"/>
+        <updated>2023-04-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We formalize all the parts of linear MBA, which allows us to prove the "Fundamental Theorem of Mixed Boolean-Arithmetic" from Part 1. Afterwards, I clarify some confusing things about linear MBA.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mixed Boolean-Arithmetic (Part 1): Introduction]]></title>
+        <id>https://plzin.github.io/posts/mba</id>
+        <link href="https://plzin.github.io/posts/mba"/>
+        <updated>2023-04-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[An Introduction to Mixed Boolean-Arithmetic (MBA) Obfuscation. I explain the idea behind the automatic generation linear MBA and permutation polynomials. We use linear MBA to obfuscate a constant and finally turn that into a non-linear MBA expression.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[0.999... = 1]]></title>
+        <id>https://plzin.github.io/posts/non-standard-analysis</id>
+        <link href="https://plzin.github.io/posts/non-standard-analysis"/>
+        <updated>2022-04-05T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[I discuss some things that I believe cause a lot of confusion around 0.999... = 1. I explain why I find one of the often given high school "proofs" unsatisfactory and we try to formalize the real numbers. Noticing the difficulty, I explain the Cauchy sequence construction. After defining decimal notation, we can now actually prove 0.999... = 1. I discuss whether the Cauchy sequence definition is "correct". Finally, I explain the hyperreal numbers and we try to make sense of 0.999... = 1 there.]]></summary>
+    </entry>
+</feed>

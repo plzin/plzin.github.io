@@ -18,6 +18,7 @@ summary: >-
     linear system. We then try to actually solve such systems by reducing
     them to systems of diophantine equations and solving those with the
     "Hermite Normal Form" or more directly by "Diagonalization".
+jsStem: mba
 ---
 
 In this post we are going to try and solve systems of linear congruences, i.e.
@@ -875,3 +876,6 @@ of the matrix that contains the vectors of the generating set as columns.
 All the non-zero columns of the result will generate the same submodule
 with as few vectors as possible.
 
+```js run
+navbar(2)
+```

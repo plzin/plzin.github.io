@@ -181,7 +181,9 @@ The blue dots are the terms of the first sum, which are automatically zero when 
 The red dots are the terms of the second sum, which we assume have the correct form already
 (because we have shown that they do previously) and are thus also zero.
 
-SVG1
+```js run
+svg1
+```
 
 We're now 80% done, even though we haven't even shown that $c_{k_1,\ldots,k_n}$ has the correct form given the form of $N$,
 which we are going to do now.
@@ -201,7 +203,9 @@ For example for 2 variables and $k=3$, we have already shown it for $k<2$,
 i.e. the the red points in the following diagram.
 And the induction step allows us to conclude it for all points on the boundary.
 
-SVG2
+```js run
+svg2
+```
 
 <div class="qed-line"></div>
 

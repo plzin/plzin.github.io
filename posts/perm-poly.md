@@ -16,6 +16,7 @@ summary: >-
     of the characterization of binary permutation polynomials.
     Finally, we try to find a polynomial that corresponds to the inverse
     permutation of a binary permutation polynomial.
+jsStem: mba
 ---
 
 In this post we are going to find polynomials $p, q\in \P$,
@@ -62,7 +63,7 @@ Some immediate questions are:
 - Are all functions $\Z_n\rightarrow\Z_n$ in $\PF$, i.e. is every function representable by a polynomial?
 - Is every permutation representable by a polynomial?
 
-The answer two both questions is no in general.
+The answer to both questions is no in general.
 We will see that during proof of the characterization of binary permutation polynomials.
 Both are true if and only if $n$ is a prime number (or 1).
 The next question then is, how many functions are representable by polynomials.
@@ -793,3 +794,7 @@ Barthelemy et al.: Binary Permutation Polynomial Inversion and Application to Ob
 \[5\] <a id="ref-5" href="https://doi.org/10.1007/978-3-319-96418-8_3">
 Barthelemy et al.: Quadratic Time Algorithm for Inversion of Binary Permutation Polynomials
 </a>
+
+```js run
+navbar(3)
+```

@@ -1,0 +1,101 @@
+/*
+ * CSS to make the markdown look nice.
+ */
+
+@reference "../../globals.css";
+
+@layer base {
+  .prose {
+    p {
+      @apply my-2;
+    }
+
+    a {
+      @apply dashed-link;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      @apply mt-3 mb-2 font-bold;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      @apply mt-3 mb-2 font-semibold;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      @apply mt-3 mb-2 font-semibold;
+    }
+
+    ul {
+      list-style: disc;
+      padding-inline-start: 40px;
+    }
+
+    ol {
+      list-style: decimal;
+      padding-inline-start: 40px;
+    }
+
+    table {
+      text-indent: initial;
+      @apply mx-auto;
+    }
+
+    th, td {
+      @apply px-2 py-1 whitespace-nowrap text-center font-normal;
+    }
+
+    thead {
+      @apply border-b-1 border-primary;
+    }
+
+    tbody {
+      tr {
+        @apply border-b-1 border-base-content/20;
+      }
+      tr:last-child {
+        @apply border-b-0;
+      }
+    }
+
+    details {
+      @apply dashed-card my-2;
+
+      &[open] summary {
+        @apply border-b-1 border-base-content/20 mb-1;
+      }
+    }
+
+    pre {
+      @apply dashed-card border-base-content/20 overflow-x-auto;
+    }
+
+    blockquote {
+      @apply dashed-card border-base-content/20;
+    }
+
+    div.theorem {
+      @apply dashed-card my-3;
+
+      > :first-child {
+        @apply font-medium border-b-1 border-base-content/20 mb-1;
+      }
+
+      > span:first-child {
+        @apply mr-2;
+      }
+    }
+
+    div.qed-line {
+      text-align: right;
+
+      &::after {
+        content: "◼";
+      }
+    }
+  }
+}
+

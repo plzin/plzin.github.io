@@ -1,6 +1,6 @@
 ---
 title: '$0.\overline{9} \stackrel?= 1$'
-plain_title: '0.999... = 1'
+plainTitle: '0.999... = 1'
 date: '2022-04-05'
 summary: >-
     I discuss some things that I believe cause a lot of confusion around

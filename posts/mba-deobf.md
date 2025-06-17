@@ -10,6 +10,7 @@ summary: >-
     We discuss the deobfuscation of linear MBA and how that corresponds
     to finding small vectors in the solution lattice of a linear system.
     We discuss methods of finding such a vector.
+jsStem: mba
 ---
 
 You should read [Part 1](/posts/mba), before coming here, but reading [Part 2](/posts/linear-systems-mod-n)
@@ -283,16 +284,14 @@ boolean formula for the given truth table.
 
 Otherwise we have to choose some sensible set of
 rewrite operations and solve the linear system.
-If you just use the solution given by the solver,
-this is all you have to do.
-You can try this out [here](https://plzin.github.io/mba-wasm/linear_mba.html),
-which is meant for obfuscation, but if you disable the "Random solution"
-checkbox, you will get the particular solution found by the algorithm.
-So input the obfuscated expression at the top and choose the rewrite operations
-and generate the "obfuscated expression".
 Otherwise you get a lattice of solutions on which you have to find the smallest one.
 It is sensible to scale each axis according to the complexity of the rewrite operation in represents.
 To find a small point on the lattice you can use a CVP algorithms (preferably for the L^1 norm).
 Another way is just eliminating the most complex operations in the solution.
 I think the optimal solution is probably some custom lattice algorithm
 because neither of the previous methods is really perfect.
+You can try the deobfuscation algorithms [here](/mba/?page=deobfuscate-linear).
+
+```js run
+navbar(4)
+```
