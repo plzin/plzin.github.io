@@ -141,7 +141,7 @@ $$
 \begin{align*}
 g(b_1^w, \dots, b_n^w)&=\sum_{i=1}^m c_if_{i*}(b_1^w, \dots, b_n^w)\\
 &=\sum_{i=1}^m c_i\varphi(f'_i((b_1, \dots, b_1), \dots, (b_n, \dots, b_n)))\\
-&=\sum_{i=1}^m c_i\varphi((f_i(b_1, \dots, b_n)), \dots, (f_i(b_1, \dots, b_n)))\\
+&=\sum_{i=1}^m c_i\varphi(f_i(b_1, \dots, b_n), \dots, f_i(b_1, \dots, b_n))\\
 &=\sum_{i=1}^m c_i\sum_{j=1}^w2^{j-1}\beta(f_i(b_1, \dots, b_n))\\
 &=\sum_{i=1}^m c_i\beta(f_i(b_1, \dots, b_n))\sum_{j=1}^w2^{j-1}\\
 &=\sum_{i=1}^m c_i\beta(f_i(b_1, \dots, b_n))(-1)\\
@@ -156,7 +156,7 @@ $$
 \begin{align*}
 g(x_1, \dots, x_n)&=\sum_{i=1}^m c_if_{i*}(x_1, \dots, x_n)\\
 &=\sum_{i=1}^m c_i\varphi(f'_i((b_{1, w}, \dots, b_{1, 1}), \dots, (b_{n,w}, \dots, b_{n,1})))\\
-&=\sum_{i=1}^m c_i\varphi((f_i(b_{1, w}, \dots, b_{n, w})), \dots, (f_i(b_{1, 1}, \dots, b_{n, 1})))\\
+&=\sum_{i=1}^m c_i\varphi(f_i(b_{1, w}, \dots, b_{n, w}), \dots, f_i(b_{1, 1}, \dots, b_{n, 1}))\\
 &=\sum_{i=1}^m c_i\sum_{j=1}^w2^{j-1}\beta(f_i(b_{1, j}, \dots, b_{n, j}))\\
 &=\sum_{j=1}^w2^{j-1}\sum_{i=1}^m c_i\beta(f_i(b_{1, j}, \dots, b_{n, j}))\\
 &=-\sum_{j=1}^w2^{j-1}g(b_{1,j}^w,\dots,b_{n,j}^w)\\
@@ -180,7 +180,7 @@ $$
 \begin{align*}
 g(\beta(b_1), \dots, \beta(b_n))&=\sum_{i=1}^m c_if_{i*}(\beta(b_1), \dots, \beta(b_n))\\
 &=\sum_{i=1}^m c_i\varphi(f'_i((0, \dots, b_1), \dots, (0, \dots, b_n)))\\
-&=\sum_{i=1}^m c_i\varphi((f_i(0, \dots, 0)), \dots, f_i(b_1, \dots, b_n))\\
+&=\sum_{i=1}^m c_i\varphi(f_i(0, \dots, 0), \dots, f_i(b_1, \dots, b_n))\\
 &=\sum_{i=1}^m c_i\left(f_i(b_1, \dots, b_n) + \sum_{j=2}^w2^{j-1}f_i(0, \dots, 0)\right)\\
 &=\sum_{i=1}^m c_i\left(f_i(b_1, \dots, b_n) + f_i(0, \dots, 0)\sum_{j=2}^w2^{j-1}\right)\\
 &=\sum_{i=1}^m c_i\left(f_i(b_1, \dots, b_n) - 2f_i(0, \dots, 0)\right)\\

@@ -5,7 +5,7 @@ import { HiSun, HiMoon } from 'react-icons/hi';
 
 /** Returns the theme that is currently active. */
 export function getTheme(): string {
-  return localStorage.getItem('theme') ?? window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return localStorage.getItem('theme') ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 }
 
 export function ThemeSwitcher() {
