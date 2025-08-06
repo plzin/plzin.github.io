@@ -228,10 +228,6 @@ export async function getPostData(id: string): Promise<Post> {
     }
   }
 
-  for (let i = 0; i < content.length; i++) {
-    content.indexOf('`');
-  }
-
   content = content.replaceAll(reCode, (m, blockLang, blockCode, inlineCode, inlineLang) => {
     // Decide if this is a code block or inline code.
     if (blockLang) {

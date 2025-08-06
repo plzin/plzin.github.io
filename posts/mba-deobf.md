@@ -103,7 +103,7 @@ $$
 + a_1\left[\begin{array}{c}-97\\75\\-97\\75\\22\\\end{array}\right]
 + a_2\left[\begin{array}{c}101\\38\\101\\38\\117\\\end{array}\right]
 $$
-Now we have many solutions, e.g. `-93*x - 38*y - 94*~x - 39*~y - 133`.
+Now we have many solutions, e.g. `-93 * x - 38 * y - 94 * ~x - 39 * ~y - 133`.
 Since we are concerned with deobfuscation, this is not good enough,
 we want the "smallest" solution.
 The following describes the same set of solutions, where the solution `x + y` can easily be read off.
